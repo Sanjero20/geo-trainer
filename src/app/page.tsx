@@ -1,5 +1,5 @@
 function Home() {
-  return <main>Geo Trainer 🇵🇭</main>;
+  return <div>Geo Trainer 🇵🇭</div>;
 }
 
 export default Home;

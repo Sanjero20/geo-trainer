@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { Metadata } from "next";
 
 import Header from "@/components/header/header";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {
   title: "Geo Trainer PH",
@@ -11,11 +12,10 @@ export const metadata: Metadata = {
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="h-screen min-h-screen">
-        <div className="container mx-auto h-full">
-          <Header />
-          {children}
-        </div>
+      <body className="flex h-screen flex-col">
+        <Header />
+        <Separator />
+        <main className="container h-full px-2 sm:container">{children}</main>
       </body>
     </html>
   );
