@@ -37,3 +37,7 @@ export const MINDANAO = [
   region13,
   BARMM,
 ];
+
+export const REGIONS = [...LUZON, ...VISAYAS, ...MINDANAO];
+
+export type GeoJSONRegion = typeof region1;

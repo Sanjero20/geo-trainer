@@ -2,8 +2,8 @@
 
 import { useCallback } from "react";
 import { MapContainer, GeoJSON } from "react-leaflet";
-import { LUZON, MINDANAO, VISAYAS } from "@/data/regions";
 import { LatLngBoundsExpression, Layer, LeafletMouseEvent } from "leaflet";
+import { REGIONS } from "@/data/regions";
 
 import "leaflet/dist/leaflet.css";
 
@@ -22,9 +22,15 @@ const philippinesBoundary: LatLngBoundsExpression = [
   [13.5145, 127.301521],
 ];
 
-function GeoMap() {
+function PhilippinesMap() {
   const highlightFeature = useCallback((e: LeafletMouseEvent) => {
     const layer = e.target;
+
+    // Extract layer properties
+    const { ADM1_EN: region, ADM2_EN: provinceName } = layer.feature.properties;
+    console.log(region, ":", provinceName);
+
+    // Change layer color
     layer.setStyle({
       fillColor: "#37cc37",
       fillOpacity: "1",
@@ -38,8 +44,8 @@ function GeoMap() {
   const onEachFeature = useCallback(
     (feature: any, layer: Layer) => {
       layer.on({
-        click: highlightFeature,
-        mouseover: highlightFeature,
+        mousedown: highlightFeature,
+        mouseup: resetStyles,
         mouseout: resetStyles,
       });
     },
@@ -57,8 +63,9 @@ function GeoMap() {
       maxBounds={philippinesBoundary}
       style={{ background: "#d4f1f9" }}
       attributionControl={false}
+      doubleClickZoom={false}
     >
-      {[...LUZON, ...VISAYAS, ...MINDANAO].map((region, index) => (
+      {REGIONS.map((region, index) => (
         <GeoJSON
           key={index}
           data={region as any}
@@ -70,4 +77,4 @@ function GeoMap() {
   );
 }
 
-export default GeoMap;
+export default PhilippinesMap;
