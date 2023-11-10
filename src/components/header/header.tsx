@@ -1,4 +1,3 @@
-import { Button } from "../ui/button";
 import NavLink from "./navlink";
 import { Menu } from "lucide-react";
 
@@ -11,8 +10,8 @@ function Header() {
         <ul className="hidden items-center gap-12 sm:flex">
           <NavLink href="/">Home</NavLink>
           <NavLink href="/learn">Learn</NavLink>
+          <NavLink href="/play">Play</NavLink>
           <NavLink href="/about">About</NavLink>
-          <Button className="px-8">Login</Button>
         </ul>
 
         <Menu className="cursor-pointer sm:hidden" />
