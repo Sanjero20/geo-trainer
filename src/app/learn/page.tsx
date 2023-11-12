@@ -9,11 +9,11 @@ const PhilippinesMap = dynamic(() => import("./philippines-map"), {
 function LearnPage() {
   return (
     <div className="flex h-full w-full justify-between py-4">
-      <div className="hidden h-full w-1/2 sm:flex">
+      <div className="hidden h-full w-3/5 sm:flex">
         <RegionList />
       </div>
 
-      <div className="h-full w-full overflow-hidden rounded-lg border-2 border-slate-500 sm:w-1/2">
+      <div className="h-full w-full overflow-hidden rounded-lg border-2 border-slate-500 sm:w-2/5">
         <PhilippinesMap />
       </div>
     </div>

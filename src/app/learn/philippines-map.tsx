@@ -6,6 +6,7 @@ import { LatLngBoundsExpression, Layer, LeafletMouseEvent } from "leaflet";
 import { REGIONS } from "@/data/regions";
 
 import "leaflet/dist/leaflet.css";
+import useRegion from "@/stores/region";
 
 const defaultStyles = {
   color: "#6e6e6e",
@@ -13,6 +14,12 @@ const defaultStyles = {
   fillOpacity: "white",
   dashArray: "",
   weight: 1,
+};
+
+const highlightStyles = {
+  ...defaultStyles,
+  fillColor: "#37cc37",
+  fillOpacity: "1",
 };
 
 const philippinesBoundary: LatLngBoundsExpression = [
@@ -23,18 +30,11 @@ const philippinesBoundary: LatLngBoundsExpression = [
 ];
 
 function PhilippinesMap() {
+  const { selectedRegion } = useRegion();
+
   const highlightFeature = useCallback((e: LeafletMouseEvent) => {
     const layer = e.target;
-
-    // Extract layer properties
-    const { ADM1_EN: region, ADM2_EN: provinceName } = layer.feature.properties;
-    console.log(region, ":", provinceName);
-
-    // Change layer color
-    layer.setStyle({
-      fillColor: "#37cc37",
-      fillOpacity: "1",
-    });
+    layer.setStyle(highlightStyles);
   }, []);
 
   const resetStyles = useCallback((e: LeafletMouseEvent) => {
@@ -44,13 +44,12 @@ function PhilippinesMap() {
   const onEachFeature = useCallback(
     (feature: any, layer: Layer) => {
       layer.on({
-        mousedown: highlightFeature,
-        mouseup: resetStyles,
+        mouseover: highlightFeature,
         mouseout: resetStyles,
       });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+
+    [highlightFeature, resetStyles],
   );
 
   return (
@@ -65,14 +64,22 @@ function PhilippinesMap() {
       attributionControl={false}
       doubleClickZoom={false}
     >
-      {REGIONS.map((region, index) => (
-        <GeoJSON
-          key={index}
-          data={region as any}
-          onEachFeature={onEachFeature}
-          style={(feature: any) => defaultStyles as any}
-        />
-      ))}
+      {REGIONS.map((region, index) => {
+        const regionName = region.features[0].properties.ADM1_EN;
+
+        const styles =
+          regionName === selectedRegion ? highlightStyles : defaultStyles;
+
+        return (
+          <GeoJSON
+            key={index}
+            data={region as any}
+            style={styles as any}
+            onEachFeature={onEachFeature}
+            // Render the other style in GeoJSON styles format
+          />
+        );
+      })}
     </MapContainer>
   );
 }
