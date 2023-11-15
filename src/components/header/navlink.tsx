@@ -12,7 +12,7 @@ interface NavLinkProps {
 function NavLink({ href, children }: NavLinkProps) {
   const route = usePathname();
   const styles = twMerge(
-    href === route ? "border-black" : "border-transparent",
+    href === route ? "border-white" : "border-transparent",
     "border-b-2",
   );
 

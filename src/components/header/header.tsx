@@ -3,7 +3,7 @@ import { Menu } from "lucide-react";
 
 function Header() {
   return (
-    <header className="flex h-12 items-center justify-between px-2 py-8 sm:container">
+    <header className="z-10 flex h-12 items-center justify-between px-2 py-10 text-white sm:container">
       <h1 className="text-2xl font-bold">GEO TRAINER</h1>
 
       <nav>
