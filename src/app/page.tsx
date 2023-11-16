@@ -1,3 +1,7 @@
+import Link from "next/navigation";
+import { Button } from "@/components/ui/button";
+import GetStartedButton from "@/components/custom/get-started";
+
 function Home() {
   return (
     <>
@@ -19,9 +23,7 @@ function Home() {
             yourself to remember the locations.{" "}
           </p>
 
-          <button className="w-fit rounded-full bg-white px-12 py-2 font-bold text-black">
-            Get Started
-          </button>
+          <GetStartedButton />
         </div>
       </main>
     </>
