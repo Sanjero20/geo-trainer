@@ -10,10 +10,11 @@ interface NavLinkProps {
 }
 
 function NavLink({ href, children }: NavLinkProps) {
-  const route = usePathname();
+  const currentUrl = usePathname();
+
   const styles = cn(
-    href === route ? "border-black" : "border-transparent",
-    href === "/" && href === route ? "border-white" : "border-transparent",
+    currentUrl === "/" ? "border-white" : "border-black",
+    currentUrl !== href && "border-transparent",
     "border-b-2",
   );
 

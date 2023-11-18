@@ -13,7 +13,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <body className="relative flex h-screen flex-col bg-background">
         <Header />
-        <main className="container h-full">{children}</main>
+        <main className="container h-full pb-4">{children}</main>
       </body>
     </html>
   );

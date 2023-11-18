@@ -10,7 +10,7 @@ function Header() {
 
   const styles = cn(
     currentUrl === "/" ? "text-white" : "text-black",
-    "z-10 flex h-12 items-center justify-between px-2 py-10 sm:container",
+    "z-10 flex items-center justify-between sm:container h-16 py-2",
   );
 
   return (
