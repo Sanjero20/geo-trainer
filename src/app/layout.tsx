@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="relative flex h-screen flex-col bg-background">
+      <body className="relative flex h-screen min-h-screen flex-col bg-background pb-4">
         <Header />
-        <main className="container h-full pb-4">{children}</main>
+        <main className="flex-grow px-4 sm:container">{children}</main>
       </body>
     </html>
   );
