@@ -1,20 +1,16 @@
 "use client";
 
 import React, { useMemo } from "react";
+import { cn } from "@/lib/utils";
+import { regionFormatter } from "@/lib/regionFormatter";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 import { REGIONS } from "@/data/regions";
-import { regionFormatter } from "@/lib/regionFormatter";
 import useRegion from "@/stores/region";
 
-type Region = {
-  region: string;
-  provinces: string[];
-};
-
 function RegionList() {
-  const { setSelectedRegion } = useRegion();
+  const { selectedRegion, setSelectedRegion } = useRegion();
 
   const regions = useMemo(
     () => REGIONS.map((region) => regionFormatter(region)),
@@ -26,13 +22,15 @@ function RegionList() {
       {regions.map((region) => (
         <React.Fragment key={region.name}>
           <p
-            className="box-border flex items-center rounded-sm p-2 hover:bg-red-900 hover:text-white"
+            className={cn(
+              "box-border flex cursor-pointer items-center rounded-sm p-2 hover:bg-zinc-300 hover:text-slate-700",
+              selectedRegion === region.name &&
+                "bg-primary text-white hover:bg-primary hover:text-white",
+            )}
             onClick={() => setSelectedRegion(region.name)}
           >
             {region.name}
           </p>
-
-          {/* <Separator /> */}
         </React.Fragment>
       ))}
     </ScrollArea>
