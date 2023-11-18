@@ -1,19 +1,21 @@
 import dynamic from "next/dynamic";
 import RegionList from "./region-list";
+import { Card } from "@/components/ui/card";
+import LoadingMap from "./loading-map";
 
 const PhilippinesMap = dynamic(() => import("./philippines-map"), {
-  loading: () => <p>Loading the Philippines map...</p>,
+  loading: () => <LoadingMap />,
   ssr: false,
 });
 
 function LearnPage() {
   return (
-    <div className="flex h-full w-full justify-between py-4">
-      <div className="hidden h-full w-3/5 sm:flex">
+    <div className="flex h-full w-full justify-between">
+      <Card className="max-h-full w-1/2 overflow-hidden ">
         <RegionList />
-      </div>
+      </Card>
 
-      <div className="h-full w-full overflow-hidden rounded-lg border-2 border-slate-500 sm:w-2/5">
+      <div className="relative h-full w-full overflow-hidden rounded-lg border-2">
         <PhilippinesMap />
       </div>
     </div>

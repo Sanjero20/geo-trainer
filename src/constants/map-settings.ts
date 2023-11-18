@@ -21,3 +21,5 @@ export const philippinesBoundary = [
 ];
 
 export const philippinesCenter = [12.8797, 121.774];
+
+export const mapBackgroundColor = "#74ccf4";

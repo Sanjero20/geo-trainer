@@ -13,6 +13,7 @@ import {
   philippinesCenter,
   defaultStyles,
   highlightStyles,
+  mapBackgroundColor,
 } from "@/constants/map-settings";
 
 function PhilippinesMap() {
@@ -59,7 +60,7 @@ function PhilippinesMap() {
       minZoom={5.25}
       maxZoom={8}
       maxBounds={philippinesBoundary as any}
-      style={{ background: "#d4f1f9" }}
+      style={{ background: mapBackgroundColor }}
       attributionControl={false}
       doubleClickZoom={false}
     >
