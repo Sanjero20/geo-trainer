@@ -2,35 +2,18 @@
 
 import "leaflet/dist/leaflet.css";
 
-import { useCallback, useEffect, useState, MouseEvent } from "react";
+import { useCallback, useState } from "react";
 import { MapContainer, GeoJSON } from "react-leaflet";
-import { Layer, LeafletMouseEvent, setOptions } from "leaflet";
+import { Layer, LeafletMouseEvent } from "leaflet";
+
 import { REGIONS } from "@/data/regions";
 import useRegion from "@/stores/region";
-
-const defaultStyles = {
-  color: "#6e6e6e",
-  fillColor: "white",
-  fillOpacity: "white",
-  dashArray: "",
-  weight: 1,
-  zIndex: 10,
-};
-
-const highlightStyles = {
-  ...defaultStyles,
-  fillColor: "#37cc37",
-  fillOpacity: "1",
-};
-
-const philippinesBoundary = [
-  [4.277256, 122.416079],
-  [21.33895, 121.721292],
-  [3.086835, 116.133513],
-  [13.5145, 127.301521],
-];
-
-const philippinesCenter = [12.8797, 121.774];
+import {
+  philippinesBoundary,
+  philippinesCenter,
+  defaultStyles,
+  highlightStyles,
+} from "@/constants/map-settings";
 
 function PhilippinesMap() {
   const { selectedRegion } = useRegion();
@@ -70,7 +53,7 @@ function PhilippinesMap() {
 
   return (
     <MapContainer
-      className="h-full w-full bg-sky-200"
+      className="h-full w-full"
       center={philippinesCenter as any}
       zoom={5}
       minZoom={5.25}
