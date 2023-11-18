@@ -1,9 +1,20 @@
+"use client";
+
 import NavLink from "./navlink";
 import { Menu } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 function Header() {
+  const currentUrl = usePathname();
+
+  const styles = cn(
+    currentUrl === "/" ? "text-white" : "text-black",
+    "z-10 flex h-12 items-center justify-between px-2 py-10 sm:container",
+  );
+
   return (
-    <header className="z-10 flex h-12 items-center justify-between px-2 py-10 text-white sm:container">
+    <header className={styles}>
       <h1 className="text-2xl font-bold">GEO TRAINER</h1>
 
       <nav>

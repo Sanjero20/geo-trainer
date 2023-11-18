@@ -1,6 +1,4 @@
-import Link from "next/navigation";
-import { Button } from "@/components/ui/button";
-import GetStartedButton from "@/components/custom/get-started";
+import GetStartedButton from "./get-started";
 
 function Home() {
   return (
@@ -20,7 +18,7 @@ function Home() {
           <p className="text-xl">
             Learn the geolocation of all provinces in the Philippines with our
             interactive project. Explore the map, take quizzes, and challenge
-            yourself to remember the locations.{" "}
+            yourself to remember the locations.
           </p>
 
           <GetStartedButton />

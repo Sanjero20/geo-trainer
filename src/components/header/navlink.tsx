@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { twMerge } from "tailwind-merge";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 interface NavLinkProps {
   href: string;
@@ -11,8 +11,9 @@ interface NavLinkProps {
 
 function NavLink({ href, children }: NavLinkProps) {
   const route = usePathname();
-  const styles = twMerge(
-    href === route ? "border-white" : "border-transparent",
+  const styles = cn(
+    href === route ? "border-black" : "border-transparent",
+    href === "/" && href === route ? "border-white" : "border-transparent",
     "border-b-2",
   );
 
