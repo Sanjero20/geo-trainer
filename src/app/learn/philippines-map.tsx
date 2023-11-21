@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 import { useCallback, useState } from "react";
 import { MapContainer, GeoJSON } from "react-leaflet";
 import { Layer, LeafletMouseEvent } from "leaflet";
+import MouseTooltip from "@/components/custom/mouse-tooltip";
 
 import { REGIONS } from "@/data/regions";
 import useRegion from "@/stores/region";
@@ -12,7 +13,7 @@ import {
   philippinesBoundary,
   philippinesCenter,
   defaultStyles,
-  highlightStyles,
+  hoverStyles,
   mapBackgroundColor,
 } from "@/constants/map-settings";
 
@@ -33,7 +34,7 @@ function PhilippinesMap() {
     const { ADM2_EN: province } = layer.feature.properties;
     setTooltipContent(province);
 
-    layer.setStyle(highlightStyles);
+    layer.setStyle(hoverStyles);
   }, []);
 
   const resetStyles = useCallback((e: LeafletMouseEvent) => {
@@ -68,7 +69,7 @@ function PhilippinesMap() {
         const regionName = region.features[0].properties.ADM1_EN;
 
         const styles =
-          regionName === selectedRegion ? highlightStyles : defaultStyles;
+          regionName === selectedRegion ? hoverStyles : defaultStyles;
 
         return (
           <GeoJSON
@@ -81,16 +82,7 @@ function PhilippinesMap() {
       })}
 
       {tooltipContent && (
-        <div
-          className="absolute rounded bg-black p-2 text-white"
-          style={{
-            top: `${tooltipPos.y}px`,
-            left: `${tooltipPos.x}px`,
-            zIndex: 1000,
-          }}
-        >
-          {tooltipContent}
-        </div>
+        <MouseTooltip position={tooltipPos}>{tooltipContent}</MouseTooltip>
       )}
     </MapContainer>
   );
