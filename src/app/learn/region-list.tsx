@@ -17,6 +17,14 @@ function RegionList() {
     [],
   );
 
+  const handleSelectRegion = (regionName: string) => {
+    if (regionName == selectedRegion) {
+      setSelectedRegion(null);
+    } else {
+      setSelectedRegion(regionName);
+    }
+  };
+
   return (
     <ScrollArea className="h-[80vh]">
       {regions.map((region) => (
@@ -27,7 +35,7 @@ function RegionList() {
               selectedRegion === region.name &&
                 "bg-primary text-white hover:bg-primary hover:text-white",
             )}
-            onClick={() => setSelectedRegion(region.name)}
+            onClick={() => handleSelectRegion(region.name)}
           >
             {region.name}
           </p>

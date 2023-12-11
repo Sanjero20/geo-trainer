@@ -10,10 +10,14 @@ export const philippinesCenter = [12.8797, 121.774];
 // Styles Settings
 export const mapBackgroundColor = "#74ccf4";
 
+// Default
+export const hoveredColor = "#37cc37";
+export const selectedColor = "#26a326";
+
 export const defaultStyles = {
   color: "#6e6e6e",
   fillColor: "white",
-  fillOpacity: "white",
+  fillOpacity: 1,
   dashArray: "",
   weight: 1,
   zIndex: 10,
@@ -21,10 +25,10 @@ export const defaultStyles = {
 
 export const hoverStyles = {
   ...defaultStyles,
-  fillColor: "#37cc37",
-  fillOpacity: "1",
+  fillColor: hoveredColor,
 };
 
 export const selectedStyles = {
   ...defaultStyles,
+  fillColor: selectedColor,
 };

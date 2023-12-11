@@ -15,6 +15,9 @@ import {
   defaultStyles,
   hoverStyles,
   mapBackgroundColor,
+  selectedStyles,
+  selectedColor,
+  hoveredColor,
 } from "@/constants/map-settings";
 
 function PhilippinesMap() {
@@ -34,12 +37,22 @@ function PhilippinesMap() {
     const { ADM2_EN: province } = layer.feature.properties;
     setTooltipContent(province);
 
-    layer.setStyle(hoverStyles);
+    // set color
+    const currentColor = layer.options.fillColor;
+    if (currentColor !== selectedColor) {
+      layer.setStyle(hoverStyles);
+    }
   }, []);
 
   const resetStyles = useCallback((e: LeafletMouseEvent) => {
+    const layer = e.target;
+    const currentColor = layer.options.fillColor;
+
+    if (currentColor !== selectedColor) {
+      layer.setStyle(defaultStyles);
+    }
+
     setTooltipContent("");
-    e.target.setStyle(defaultStyles);
   }, []);
 
   const onEachFeature = useCallback(
@@ -69,7 +82,7 @@ function PhilippinesMap() {
         const regionName = region.features[0].properties.ADM1_EN;
 
         const styles =
-          regionName === selectedRegion ? hoverStyles : defaultStyles;
+          regionName === selectedRegion ? selectedStyles : defaultStyles;
 
         return (
           <GeoJSON
