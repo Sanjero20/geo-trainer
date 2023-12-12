@@ -32,3 +32,8 @@ export const selectedStyles = {
   ...defaultStyles,
   fillColor: selectedColor,
 };
+
+export const selectedHoverStyles = {
+  ...defaultStyles,
+  fillColor: "green",
+};
