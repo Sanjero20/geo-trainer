@@ -17,7 +17,7 @@ import {
   mapBackgroundColor,
   selectedStyles,
   selectedColor,
-  hoveredColor,
+  selectedHoveredColor,
   selectedHoverStyles,
 } from "@/constants/map-settings";
 
@@ -41,7 +41,10 @@ function PhilippinesMap() {
     // set color
     const currentColor = layer.options.fillColor;
 
-    if (currentColor === selectedColor || currentColor == "green") {
+    if (
+      currentColor === selectedColor ||
+      currentColor == selectedHoveredColor
+    ) {
       layer.setStyle(selectedHoverStyles);
     } else {
       layer.setStyle(hoverStyles);
@@ -55,7 +58,7 @@ function PhilippinesMap() {
     // set color
     if (currentColor === selectedColor) {
       layer.setStyle(selectedStyles);
-    } else if (currentColor === "green") {
+    } else if (currentColor === selectedHoveredColor) {
       layer.setStyle(selectedStyles);
     } else {
       layer.setStyle(defaultStyles); // Turn back to white

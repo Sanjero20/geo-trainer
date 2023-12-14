@@ -13,6 +13,7 @@ export const mapBackgroundColor = "#74ccf4";
 // Default
 export const hoveredColor = "#37cc37";
 export const selectedColor = "#26a326";
+export const selectedHoveredColor = "green";
 
 export const defaultStyles = {
   color: "#6e6e6e",
@@ -35,5 +36,5 @@ export const selectedStyles = {
 
 export const selectedHoverStyles = {
   ...defaultStyles,
-  fillColor: "green",
+  fillColor: selectedHoveredColor,
 };
