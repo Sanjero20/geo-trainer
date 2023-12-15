@@ -10,12 +10,12 @@ function Home() {
 
       {/* Main Content */}
       <main className="flex h-full flex-col justify-center text-white">
-        <div className="flex w-1/2 flex-col gap-8">
-          <h1 className="text-6xl font-bold">
+        <div className="flex flex-col items-center gap-4 sm:w-1/2 sm:items-start">
+          <h1 className="text-center text-3xl font-bold sm:text-start sm:text-6xl">
             Memorize Philippines Province Geolocation
           </h1>
 
-          <p className="text-xl">
+          <p className="text-center text-xl sm:text-start">
             Learn the geolocation of all provinces in the Philippines with our
             interactive project. Explore the map, take quizzes, and challenge
             yourself to remember the locations.
