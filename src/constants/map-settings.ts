@@ -10,10 +10,15 @@ export const philippinesCenter = [12.8797, 121.774];
 // Styles Settings
 export const mapBackgroundColor = "#74ccf4";
 
-// Default
+// Learning Page colors
 export const hoveredColor = "#37cc37";
 export const selectedColor = "#26a326";
 export const selectedHoveredColor = "green";
+
+// Play page colors
+export const hoverColorPlay = "#d4d4d4";
+export const correctGuessColor = "green"; //green
+export const wrongGuessColor = "red"; //red
 
 export const defaultStyles = {
   color: "#6e6e6e",
@@ -24,6 +29,7 @@ export const defaultStyles = {
   zIndex: 10,
 };
 
+// Learn page styles
 export const hoverStyles = {
   ...defaultStyles,
   fillColor: hoveredColor,
@@ -38,3 +44,6 @@ export const selectedHoverStyles = {
   ...defaultStyles,
   fillColor: selectedHoveredColor,
 };
+
+// Play page styles
+export const playHoverStyles = {};
