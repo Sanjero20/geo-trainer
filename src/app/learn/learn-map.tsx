@@ -1,27 +1,24 @@
 "use client";
 
-import "leaflet/dist/leaflet.css";
+import { useCallback, useMemo, useState } from "react";
 
-import { useCallback, useState } from "react";
-import { MapContainer, GeoJSON } from "react-leaflet";
+import { GeoJSON } from "react-leaflet";
 import { Layer, LeafletMouseEvent } from "leaflet";
-import MouseTooltip from "@/components/custom/mouse-tooltip";
 
-import { REGIONS } from "@/data/regions";
+import InteractiveMap from "@/components/interactive-map";
+import MouseTooltip from "@/components/mouse-tooltip";
 import useRegion from "@/stores/region";
+import { REGIONS } from "@/data/regions";
 import {
-  philippinesBoundary,
-  philippinesCenter,
   defaultStyles,
   hoverStyles,
-  mapBackgroundColor,
   selectedStyles,
   selectedColor,
   selectedHoveredColor,
   selectedHoverStyles,
 } from "@/constants/map-settings";
 
-function PhilippinesMap() {
+function LearnPhilippinesMap() {
   const { selectedRegion } = useRegion();
 
   const [tooltipContent, setTooltipContent] = useState("");
@@ -30,12 +27,13 @@ function PhilippinesMap() {
   const highlightFeature = useCallback((e: LeafletMouseEvent) => {
     const layer = e.target;
 
+    // Extract event layer data
     const x = e.containerPoint.x + 15;
     const y = e.containerPoint.y + 5;
-
-    setTooltipPos({ x, y });
-
     const { ADM2_EN: province } = layer.feature.properties;
+
+    // Set Tooltip coords and content
+    setTooltipPos({ x, y });
     setTooltipContent(province);
 
     // set color
@@ -78,39 +76,38 @@ function PhilippinesMap() {
     [highlightFeature, resetStyles],
   );
 
+  const memoizedRegions = useMemo(
+    () => (
+      <>
+        {REGIONS.map((region, index) => {
+          const regionName = region.features[0].properties.ADM1_EN;
+
+          const styles =
+            regionName === selectedRegion ? selectedStyles : defaultStyles;
+
+          return (
+            <GeoJSON
+              key={index}
+              data={region as any}
+              style={styles as any}
+              onEachFeature={onEachFeature}
+            />
+          );
+        })}
+      </>
+    ),
+    [onEachFeature, selectedRegion],
+  );
+
   return (
-    <MapContainer
-      className="h-full w-full"
-      center={philippinesCenter as any}
-      zoom={5}
-      minZoom={5.25}
-      maxZoom={8}
-      maxBounds={philippinesBoundary as any}
-      style={{ background: mapBackgroundColor }}
-      attributionControl={false}
-      doubleClickZoom={false}
-    >
-      {REGIONS.map((region, index) => {
-        const regionName = region.features[0].properties.ADM1_EN;
-
-        const styles =
-          regionName === selectedRegion ? selectedStyles : defaultStyles;
-
-        return (
-          <GeoJSON
-            key={index}
-            data={region as any}
-            style={styles as any}
-            onEachFeature={onEachFeature}
-          />
-        );
-      })}
+    <InteractiveMap>
+      {memoizedRegions}
 
       {tooltipContent && (
         <MouseTooltip position={tooltipPos}>{tooltipContent}</MouseTooltip>
       )}
-    </MapContainer>
+    </InteractiveMap>
   );
 }
 
-export default PhilippinesMap;
+export default LearnPhilippinesMap;

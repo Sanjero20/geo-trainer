@@ -1,6 +1,6 @@
 import { mapBackgroundColor } from "@/constants/map-settings";
 
-function LoadingMap() {
+function InteractiveMapLoader() {
   return (
     <div
       className="flex h-full w-full items-center justify-center text-white"
@@ -11,4 +11,4 @@ function LoadingMap() {
   );
 }
 
-export default LoadingMap;
+export default InteractiveMapLoader;

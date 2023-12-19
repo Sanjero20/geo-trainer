@@ -1,11 +1,12 @@
 import dynamic from "next/dynamic";
 import RegionList from "./region-list";
-import LoadingMap from "./loading-map";
+
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
+import InteractiveMapLoader from "@/components/interactive-map/loader";
 
-const PhilippinesMap = dynamic(() => import("./philippines-map"), {
-  loading: () => <LoadingMap />,
+const PhilippinesMap = dynamic(() => import("./learn-map"), {
+  loading: () => <InteractiveMapLoader />,
   ssr: false,
 });
 
