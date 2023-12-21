@@ -1,42 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import InteractiveMapLoader from "@/components/interactive-map/loader";
 
 import { getAllProvinces } from "@/data/provinces";
+import { shuffleArray } from "@/lib/array-utils";
 
-const PhilippinesMap = dynamic(() => import("./play-map"), {
+const PlayableMap = dynamic(() => import("./play-map"), {
   loading: () => <InteractiveMapLoader />,
   ssr: false,
 });
 
 function PlayPage() {
-  const [provinces, setProvinces] = useState<string[]>([]);
-  const [score, setScore] = useState(0);
-
   useEffect(() => {
-    const list = getAllProvinces().sort();
+    let provinces: any = getAllProvinces();
 
-    // randomize the order of the provinces
+    provinces = provinces.map((province: any) => ({
+      name: province,
+      guessed: null,
+    }));
 
-    setProvinces(list);
+    provinces = shuffleArray(provinces);
+    localStorage.setItem("provinces", JSON.stringify(provinces));
+    localStorage.setItem("current", "0");
   }, []);
 
   return (
     <div className="h-full w-full">
-      {/* Scoreboard */}
-      <div className="text-end">
-        {score} / {provinces.length}
-      </div>
-
-      {/* 3 attempts for each province */}
-      {/* numbers of provinces needed to guess */}
-      {/* Score / Number*/}
-      {/* MAP */}
-
-      {/* Restart button  */}
-      <PhilippinesMap guessProvince={provinces[5]} />
+      <PlayableMap />
     </div>
   );
 }
