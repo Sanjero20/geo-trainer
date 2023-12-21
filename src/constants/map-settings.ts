@@ -17,8 +17,8 @@ export const selectedHoveredColor = "green";
 
 // Play page colors
 export const hoverColorPlay = "#d4d4d4";
-export const correctGuessColor = "green"; //green
-export const wrongGuessColor = "red"; //red
+export const correctGuessColor = "#26a326";
+export const wrongGuessColor = "#dc2626";
 
 export const defaultStyles = {
   color: "#6e6e6e",
@@ -44,6 +44,3 @@ export const selectedHoverStyles = {
   ...defaultStyles,
   fillColor: selectedHoveredColor,
 };
-
-// Play page styles
-export const playHoverStyles = {};

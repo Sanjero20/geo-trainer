@@ -12,18 +12,26 @@ const PlayableMap = dynamic(() => import("./play-map"), {
   ssr: false,
 });
 
+type LocalStorageProvince = {
+  name: string;
+  guessed: boolean | null;
+};
+
 function PlayPage() {
   useEffect(() => {
-    let provinces: any = getAllProvinces();
+    const provinces = shuffleArray(getAllProvinces());
 
-    provinces = provinces.map((province: any) => ({
+    const parsedProvinces = provinces.map((province: any) => ({
       name: province,
       guessed: null,
     }));
 
-    provinces = shuffleArray(provinces);
-    localStorage.setItem("provinces", JSON.stringify(provinces));
+    localStorage.setItem("provinces", JSON.stringify(parsedProvinces));
     localStorage.setItem("current", "0");
+
+    return () => {
+      localStorage.clear();
+    };
   }, []);
 
   return (
