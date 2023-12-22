@@ -22,7 +22,7 @@ function InteractiveMap({ children }: InteractiveMapProps) {
       center={philippinesCenter as any}
       zoom={5}
       minZoom={5.25}
-      maxZoom={8}
+      maxZoom={10}
       maxBounds={philippinesBoundary as any}
       style={{ background: mapBackgroundColor }}
       attributionControl={false}

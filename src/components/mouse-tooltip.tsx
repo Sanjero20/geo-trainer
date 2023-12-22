@@ -1,8 +1,10 @@
+export type TooltipCoords = {
+  x: number;
+  y: number;
+};
+
 interface MouseTooltipProps {
-  position: {
-    x: number;
-    y: number;
-  };
+  position: TooltipCoords;
   children: React.ReactNode;
 }
 

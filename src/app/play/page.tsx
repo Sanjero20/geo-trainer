@@ -1,23 +1,21 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import InteractiveMapLoader from "@/components/interactive-map/loader";
 
 import { getAllProvinces } from "@/data/provinces";
 import { shuffleArray } from "@/lib/array-utils";
+import { getGameData } from "@/lib/game-utils";
 
 const PlayableMap = dynamic(() => import("./play-map"), {
   loading: () => <InteractiveMapLoader />,
   ssr: false,
 });
 
-type LocalStorageProvince = {
-  name: string;
-  guessed: boolean | null;
-};
-
 function PlayPage() {
+  const [remaining, setRemaining] = useState<number>(getAllProvinces().length);
+
   useEffect(() => {
     const provinces = shuffleArray(getAllProvinces());
 
@@ -34,9 +32,22 @@ function PlayPage() {
     };
   }, []);
 
+  const triggerRemaining = () => {
+    const { provinces, currentGuessIndex } = getGameData();
+
+    const provinceLength = provinces.length;
+
+    if (provinceLength - 1 === currentGuessIndex) {
+      setRemaining(0);
+      return;
+    }
+
+    setRemaining(provinceLength - currentGuessIndex);
+  };
+
   return (
     <div className="h-full w-full">
-      <PlayableMap />
+      <PlayableMap triggerScore={triggerRemaining} />
     </div>
   );
 }

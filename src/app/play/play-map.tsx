@@ -1,22 +1,31 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useCallback, useState, MouseEvent, useEffect } from "react";
 import { GeoJSON } from "react-leaflet";
-import { Layer, LeafletMouseEvent } from "leaflet";
+import { LeafletMouseEvent } from "leaflet";
 
 import InteractiveMap from "@/components/interactive-map";
-import MouseTooltip from "@/components/mouse-tooltip";
+import MouseTooltip, { TooltipCoords } from "@/components/mouse-tooltip";
+
 import { REGIONS } from "@/data/regions";
+import { getGameData } from "@/lib/game-utils";
 import {
   defaultStyles,
-  wrongGuessColor,
-  correctGuessColor,
+  wrongColor,
+  correctColor,
   hoverColorPlay,
 } from "@/constants/map-settings";
 
-function PhilippinesMap() {
+interface Props {
+  triggerScore: () => void;
+}
+
+function PhilippinesMap({ triggerScore }: Props) {
   const [tooltipContent, setTooltipContent] = useState("");
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const [tooltipPosition, setTooltipPosition] = useState<TooltipCoords | null>(
+    null,
+  );
 
   const handleMouseToolTip = (e: MouseEvent<HTMLDivElement>) => {
     const divWidth = e.currentTarget.offsetWidth;
@@ -32,13 +41,10 @@ function PhilippinesMap() {
   };
 
   const handleMouseEnter = () => {
-    const currentGuessIndex = parseInt(localStorage.getItem("current") || "0");
-    const provinces = JSON.parse(localStorage.getItem("provinces") || "[]");
-    const currentlyGuessing = provinces[currentGuessIndex]?.name || "";
-
-    if (currentGuessIndex === provinces.length - 1) return;
-
-    setTooltipContent(currentlyGuessing);
+    const { provinces, currentGuessIndex, currentlyGuessing } = getGameData();
+    if (currentGuessIndex < provinces.length - 1) {
+      setTooltipContent(currentlyGuessing);
+    }
   };
 
   const clickFeature = useCallback((e: LeafletMouseEvent) => {
@@ -48,25 +54,17 @@ function PhilippinesMap() {
     // Skip if the layer is already colored, indicating it's not clickable.
     if (layer.options.fillColor !== hoverColorPlay) return;
 
-    const currentGuessIndex = parseInt(localStorage.getItem("current") || "0");
-    const provinces = JSON.parse(localStorage.getItem("provinces") || "[]");
-    const currentlyGuessing = provinces[currentGuessIndex]?.name || "";
-
+    const { provinces, currentGuessIndex, currentlyGuessing } = getGameData();
     const province = layer.feature.properties.ADM2_EN;
     const isCorrect = province === currentlyGuessing;
 
-    const updatedProvinces = provinces.map((province: any) =>
-      province.name === currentlyGuessing
-        ? { ...province, guessed: isCorrect }
-        : province,
-    );
-
+    // Update the styles of the correct layer
     map.eachLayer((mapLayer: any) => {
       if (
         mapLayer.feature &&
         mapLayer.feature.properties.ADM2_EN === currentlyGuessing
       ) {
-        const fillColor = isCorrect ? correctGuessColor : wrongGuessColor;
+        const fillColor = isCorrect ? correctColor : wrongColor;
         mapLayer.setStyle({ fillColor });
       }
     });
@@ -77,10 +75,19 @@ function PhilippinesMap() {
       return;
     }
 
+    setTooltipContent(provinces[currentGuessIndex + 1]?.name || "");
+
+    const updatedProvinces = provinces.map((province: any) =>
+      province.name === currentlyGuessing
+        ? { ...province, guessed: isCorrect }
+        : province,
+    );
+
+    // Save changes to local storage
     localStorage.setItem("provinces", JSON.stringify(updatedProvinces));
     localStorage.setItem("current", JSON.stringify(currentGuessIndex + 1));
 
-    setTooltipContent(provinces[currentGuessIndex + 1]?.name || "");
+    triggerScore();
   }, []);
 
   const highlightFeature = useCallback((e: LeafletMouseEvent) => {
@@ -116,10 +123,10 @@ function PhilippinesMap() {
 
   return (
     <div
-      className="relative h-full w-full"
+      className="relative h-full w-full overflow-hidden rounded-xl"
       onMouseMove={handleMouseToolTip}
-      onMouseLeave={() => setTooltipContent("")}
       onMouseEnter={handleMouseEnter}
+      onMouseLeave={() => setTooltipContent("")}
     >
       <InteractiveMap>
         {REGIONS.map((region, index) => (
@@ -132,7 +139,7 @@ function PhilippinesMap() {
         ))}
       </InteractiveMap>
 
-      {tooltipContent && (
+      {tooltipContent && tooltipPosition && (
         <MouseTooltip position={tooltipPosition}>{tooltipContent}</MouseTooltip>
       )}
     </div>
