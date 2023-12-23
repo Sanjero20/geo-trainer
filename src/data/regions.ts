@@ -1,22 +1,23 @@
-import region1 from "./regions/region-1.json";
-import region2 from "./regions/region-2.json";
-import region3 from "./regions/region-3.json";
-import region4a from "./regions/region-4a.json";
-import region4b from "./regions/region-4b.json";
-import region5 from "./regions/region-5.json";
-import region6 from "./regions/region-6.json";
-import region7 from "./regions/region-7.json";
-import region8 from "./regions/region-8.json";
-import region9 from "./regions/region-9.json";
-import region10 from "./regions/region-10.json";
-import region11 from "./regions/region-11.json";
-import region12 from "./regions/region-12.json";
-import region13 from "./regions/region-13.json";
-import NCR from "./regions/ncr.json";
-import CAR from "./regions/car.json";
-import BARMM from "./regions/barmm.json";
+import region1 from "./geojson/region-1.json";
+import region2 from "./geojson/region-2.json";
+import region3 from "./geojson/region-3.json";
+import region4a from "./geojson/region-4a.json";
+import region4b from "./geojson/region-4b.json";
+import region5 from "./geojson/region-5.json";
+import region6 from "./geojson/region-6.json";
+import region7 from "./geojson/region-7.json";
+import region8 from "./geojson/region-8.json";
+import region9 from "./geojson/region-9.json";
+import region10 from "./geojson/region-10.json";
+import region11 from "./geojson/region-11.json";
+import region12 from "./geojson/region-12.json";
+import region13 from "./geojson/region-13.json";
 
-export const LUZON = [
+import NCR from "./geojson/ncr.json";
+import CAR from "./geojson/car.json";
+import BARMM from "./geojson/barmm.json";
+
+const LUZON = [
   NCR,
   CAR,
   region1,
@@ -27,16 +28,9 @@ export const LUZON = [
   region5,
 ];
 
-export const VISAYAS = [region6, region7, region8];
+const VISAYAS = [region6, region7, region8];
 
-export const MINDANAO = [
-  region9,
-  region10,
-  region11,
-  region12,
-  region13,
-  BARMM,
-];
+const MINDANAO = [region9, region10, region11, region12, region13, BARMM];
 
 export const REGIONS = [...LUZON, ...VISAYAS, ...MINDANAO];
 

@@ -69,37 +69,6 @@
     {
       "type": "Feature",
       "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [124.241580956, 7.262859672000047],
-            [124.23449351600004, 7.233458753000036],
-            [124.28849647000004, 7.160595914000055],
-            [124.15909670700012, 7.202227239000024],
-            [124.19409900900007, 7.252857431000052],
-            [124.241580956, 7.262859672000047]
-          ]
-        ]
-      },
-      "properties": {
-        "Shape_Leng": 0.64919976157,
-        "Shape_Area": 0.00704968545087,
-        "ADM2_EN": "Cotabato City",
-        "ADM2_PCODE": "PH129800000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region XII",
-        "ADM1_PCODE": "PH120000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
           [
