@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useCallback, useState, MouseEvent, useEffect } from "react";
+import { useCallback, useState, MouseEvent, useEffect, useMemo } from "react";
 import { GeoJSON } from "react-leaflet";
 import { LeafletMouseEvent } from "leaflet";
 
@@ -18,10 +18,11 @@ import {
 import { useGameStore } from "@/stores/game";
 
 interface Props {
-  // triggerScore: () => void;
+  mapStyles: any;
+  restartGame: () => void;
 }
 
-function PhilippinesMap({}: Props) {
+function PhilippinesMap({ mapStyles, restartGame }: Props) {
   const { resetGame, getGameData, updateGameData } = useGameStore();
 
   const [tooltipContent, setTooltipContent] = useState("");
@@ -124,6 +125,22 @@ function PhilippinesMap({}: Props) {
     };
   }, []);
 
+  const memoizedRegions = useMemo(
+    () => (
+      <>
+        {REGIONS.map((region, index) => (
+          <GeoJSON
+            key={index}
+            data={region as any}
+            style={mapStyles as any}
+            onEachFeature={onEachFeature}
+          />
+        ))}
+      </>
+    ),
+    [restartGame],
+  );
+
   return (
     <div
       className="relative h-full w-full overflow-hidden rounded-md"
@@ -131,16 +148,7 @@ function PhilippinesMap({}: Props) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setTooltipContent("")}
     >
-      <InteractiveMap>
-        {REGIONS.map((region, index) => (
-          <GeoJSON
-            key={index}
-            data={region as any}
-            style={defaultStyles}
-            onEachFeature={onEachFeature}
-          />
-        ))}
-      </InteractiveMap>
+      <InteractiveMap>{memoizedRegions}</InteractiveMap>
 
       {tooltipContent && tooltipPosition && (
         <MouseTooltip position={tooltipPosition}>{tooltipContent}</MouseTooltip>

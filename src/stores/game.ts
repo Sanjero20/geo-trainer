@@ -58,6 +58,7 @@ export const useGameStore = create<GameStates & GameActions>((set, get) => ({
     set({
       provinces: initialProvinces(),
       currentIndex: 0,
+      remaining: initialRemaining,
     });
   },
 

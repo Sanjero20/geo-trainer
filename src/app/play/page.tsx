@@ -6,6 +6,7 @@ import InteractiveMapLoader from "@/components/interactive-map/loader";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useGameStore } from "@/stores/game";
+import { defaultStyles } from "@/constants/map-settings";
 
 const PlayableMap = dynamic(() => import("./play-map"), {
   loading: () => <InteractiveMapLoader />,
@@ -13,15 +14,26 @@ const PlayableMap = dynamic(() => import("./play-map"), {
 });
 
 function PlayPage() {
-  const { remaining } = useGameStore();
+  const { remaining, resetGame } = useGameStore();
+
+  const [mapStyles, setMapStyles] = useState<any>(defaultStyles);
+
+  const restartGame = () => {
+    setMapStyles({ ...defaultStyles });
+    resetGame();
+  };
 
   return (
     <>
       <div className="relative flex h-full w-full flex-col gap-1">
-        <PlayableMap />
+        <PlayableMap mapStyles={mapStyles} restartGame={restartGame} />
 
         <section className="flex items-center justify-between">
-          <Button className="w-24" variant={"destructive"}>
+          <Button
+            className="w-24"
+            variant={"destructive"}
+            onClick={restartGame}
+          >
             Reset
           </Button>
 
