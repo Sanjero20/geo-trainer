@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import { regionFormatter } from "@/lib/regionFormatter";
 
@@ -24,6 +24,11 @@ function RegionList() {
       setSelectedRegion(regionName);
     }
   };
+
+  useEffect(() => {
+    return () => setSelectedRegion("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <ScrollArea className="h-[80vh]">
