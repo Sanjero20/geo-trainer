@@ -3,10 +3,12 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import InteractiveMapLoader from "@/components/interactive-map/loader";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useGameStore } from "@/stores/game";
 import { defaultStyles } from "@/components/interactive-map/map-settings";
+import HowToPlay from "./how-to-play";
+import ModalResetGame from "./reset-modal";
+import { Button } from "@/components/ui/button";
 
 const PlayableMap = dynamic(() => import("./play-map"), {
   loading: () => <InteractiveMapLoader />,
@@ -14,11 +16,14 @@ const PlayableMap = dynamic(() => import("./play-map"), {
 });
 
 function PlayPage() {
-  const { remaining, resetGame } = useGameStore();
-
+  const [restartModalOpen, setRestartModalOpen] = useState(false);
+  const [tutorialModalOpen, setTutorialModalOpen] = useState(false);
   const [mapStyles, setMapStyles] = useState<any>(defaultStyles);
 
+  const { remaining, resetGame } = useGameStore();
+
   const restartGame = () => {
+    setRestartModalOpen(false);
     setMapStyles({ ...defaultStyles });
     resetGame();
   };
@@ -28,13 +33,13 @@ function PlayPage() {
       <div className="relative flex h-full w-full flex-col gap-1">
         <PlayableMap mapStyles={mapStyles} restartGame={restartGame} />
 
+        <Button onClick={() => setTutorialModalOpen(true)}>?</Button>
         <section className="flex items-center justify-between">
           <Button
-            className="w-24"
-            variant={"destructive"}
-            onClick={restartGame}
+            variant="destructive"
+            onClick={() => setRestartModalOpen(true)}
           >
-            Reset
+            Restart
           </Button>
 
           <div className="dark flex gap-2">
@@ -43,6 +48,15 @@ function PlayPage() {
           </div>
         </section>
       </div>
+
+      {/* Dialogs */}
+      <HowToPlay open={tutorialModalOpen} onOpenChange={setTutorialModalOpen} />
+
+      <ModalResetGame
+        open={restartModalOpen}
+        onOpenChange={setRestartModalOpen}
+        restartGame={restartGame}
+      />
     </>
   );
 }
