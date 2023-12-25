@@ -9,7 +9,7 @@ import {
   philippinesCenter,
   philippinesBoundary,
   mapBackgroundColor,
-} from "@/constants/map-settings";
+} from "@/components/interactive-map/map-settings";
 
 interface InteractiveMapProps {
   children: React.ReactNode;

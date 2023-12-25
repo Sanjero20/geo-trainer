@@ -14,7 +14,7 @@ import {
   wrongColor,
   correctColor,
   hoverColorPlay,
-} from "@/constants/map-settings";
+} from "@/components/interactive-map/map-settings";
 import { useGameStore } from "@/stores/game";
 
 interface Props {
@@ -132,7 +132,7 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
           <GeoJSON
             key={index}
             data={region as any}
-            style={mapStyles as any}
+            style={mapStyles}
             onEachFeature={onEachFeature}
           />
         ))}

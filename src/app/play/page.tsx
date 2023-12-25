@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import InteractiveMapLoader from "@/components/interactive-map/loader";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useGameStore } from "@/stores/game";
-import { defaultStyles } from "@/constants/map-settings";
+import { defaultStyles } from "@/components/interactive-map/map-settings";
 
 const PlayableMap = dynamic(() => import("./play-map"), {
   loading: () => <InteractiveMapLoader />,

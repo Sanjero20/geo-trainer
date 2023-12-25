@@ -21,7 +21,7 @@ export const correctColor = "#26a326";
 export const wrongColor = "#dc2626";
 
 export const defaultStyles = {
-  color: "#6e6e6e",
+  color: "#16161a",
   fillColor: "white",
   fillOpacity: 1,
   dashArray: "",

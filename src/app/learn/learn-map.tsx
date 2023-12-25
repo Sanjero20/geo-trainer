@@ -16,7 +16,7 @@ import {
   selectedColor,
   selectedHoveredColor,
   selectedHoverStyles,
-} from "@/constants/map-settings";
+} from "@/components/interactive-map/map-settings";
 
 function LearnPhilippinesMap() {
   const { selectedRegion } = useRegion();

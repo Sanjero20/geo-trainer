@@ -1,4 +1,4 @@
-import { mapBackgroundColor } from "@/constants/map-settings";
+import { mapBackgroundColor } from "@/components/interactive-map/map-settings";
 
 function InteractiveMapLoader() {
   return (
