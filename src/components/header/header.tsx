@@ -23,7 +23,6 @@ function Header() {
           <NavLink href="/">Home</NavLink>
           <NavLink href="/learn">Learn</NavLink>
           <NavLink href="/play">Play</NavLink>
-          <NavLink href="/about">About</NavLink>
         </ul>
 
         <Menu className="cursor-pointer sm:hidden" />
