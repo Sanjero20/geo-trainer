@@ -27,6 +27,7 @@ function InteractiveMap({ children }: InteractiveMapProps) {
       style={{ background: mapBackgroundColor }}
       attributionControl={false}
       doubleClickZoom={false}
+      zoomControl={false}
     >
       {/* GeoJSON */}
       {children}

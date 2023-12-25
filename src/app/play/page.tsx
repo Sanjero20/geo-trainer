@@ -3,10 +3,9 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import InteractiveMapLoader from "@/components/interactive-map/loader";
-
-import { getAllProvinces } from "@/data/provinces";
-import { shuffleArray } from "@/lib/array-utils";
-import { getGameData } from "@/lib/game-utils";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { useGameStore } from "@/stores/game";
 
 const PlayableMap = dynamic(() => import("./play-map"), {
   loading: () => <InteractiveMapLoader />,
@@ -14,41 +13,25 @@ const PlayableMap = dynamic(() => import("./play-map"), {
 });
 
 function PlayPage() {
-  const [remaining, setRemaining] = useState<number>(getAllProvinces().length);
-
-  useEffect(() => {
-    const provinces = shuffleArray(getAllProvinces());
-
-    const parsedProvinces = provinces.map((province: any) => ({
-      name: province,
-      guessed: null,
-    }));
-
-    localStorage.setItem("provinces", JSON.stringify(parsedProvinces));
-    localStorage.setItem("current", "0");
-
-    return () => {
-      localStorage.clear();
-    };
-  }, []);
-
-  const triggerRemaining = () => {
-    const { provinces, currentGuessIndex } = getGameData();
-
-    const provinceLength = provinces.length;
-
-    if (provinceLength - 1 === currentGuessIndex) {
-      setRemaining(0);
-      return;
-    }
-
-    setRemaining(provinceLength - currentGuessIndex);
-  };
+  const { remaining } = useGameStore();
 
   return (
-    <div className="h-full w-full">
-      <PlayableMap triggerScore={triggerRemaining} />
-    </div>
+    <>
+      <div className="relative flex h-full w-full flex-col gap-1">
+        <PlayableMap />
+
+        <section className="flex items-center justify-between">
+          <Button className="w-24" variant={"destructive"}>
+            Reset
+          </Button>
+
+          <div className="dark flex gap-2">
+            <Card className="px-8 py-2">00:00</Card>
+            <Card className="px-8 py-2">{remaining} remaining</Card>
+          </div>
+        </section>
+      </div>
+    </>
   );
 }
 

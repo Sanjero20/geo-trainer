@@ -9,19 +9,21 @@ import InteractiveMap from "@/components/interactive-map";
 import MouseTooltip, { TooltipCoords } from "@/components/mouse-tooltip";
 
 import { REGIONS } from "@/data/regions";
-import { getGameData } from "@/lib/game-utils";
 import {
   defaultStyles,
   wrongColor,
   correctColor,
   hoverColorPlay,
 } from "@/constants/map-settings";
+import { useGameStore } from "@/stores/game";
 
 interface Props {
-  triggerScore: () => void;
+  // triggerScore: () => void;
 }
 
-function PhilippinesMap({ triggerScore }: Props) {
+function PhilippinesMap({}: Props) {
+  const { resetGame, getGameData, updateGameData } = useGameStore();
+
   const [tooltipContent, setTooltipContent] = useState("");
   const [tooltipPosition, setTooltipPosition] = useState<TooltipCoords | null>(
     null,
@@ -41,8 +43,8 @@ function PhilippinesMap({ triggerScore }: Props) {
   };
 
   const handleMouseEnter = () => {
-    const { provinces, currentGuessIndex, currentlyGuessing } = getGameData();
-    if (currentGuessIndex < provinces.length - 1) {
+    const { provinces, currentIndex, currentlyGuessing } = getGameData();
+    if (currentIndex < provinces.length - 1) {
       setTooltipContent(currentlyGuessing);
     }
   };
@@ -54,7 +56,8 @@ function PhilippinesMap({ triggerScore }: Props) {
     // Skip if the layer is already colored, indicating it's not clickable.
     if (layer.options.fillColor !== hoverColorPlay) return;
 
-    const { provinces, currentGuessIndex, currentlyGuessing } = getGameData();
+    const { provinces, currentIndex, currentlyGuessing } = getGameData();
+
     const province = layer.feature.properties.ADM2_EN;
     const isCorrect = province === currentlyGuessing;
 
@@ -69,25 +72,22 @@ function PhilippinesMap({ triggerScore }: Props) {
       }
     });
 
-    // Clear the tooltip when finished indexing the entire list
-    if (currentGuessIndex === provinces.length - 1) {
-      setTooltipContent("");
-      return;
-    }
-
-    setTooltipContent(provinces[currentGuessIndex + 1]?.name || "");
-
+    // Change the "guessed" flag if correct or not
     const updatedProvinces = provinces.map((province: any) =>
       province.name === currentlyGuessing
         ? { ...province, guessed: isCorrect }
         : province,
     );
 
-    // Save changes to local storage
-    localStorage.setItem("provinces", JSON.stringify(updatedProvinces));
-    localStorage.setItem("current", JSON.stringify(currentGuessIndex + 1));
+    updateGameData(updatedProvinces);
 
-    triggerScore();
+    // Clear the tooltip when finished indexing the entire list
+    if (currentIndex === provinces.length - 1) {
+      setTooltipContent("");
+      return;
+    }
+
+    setTooltipContent(provinces[currentIndex + 1].name || "");
   }, []);
 
   const highlightFeature = useCallback((e: LeafletMouseEvent) => {
@@ -118,12 +118,15 @@ function PhilippinesMap({ triggerScore }: Props) {
 
   useEffect(() => {
     // Cleanup function for component unmount or dependencies change
-    return () => setTooltipContent("");
+    return () => {
+      setTooltipContent("");
+      resetGame();
+    };
   }, []);
 
   return (
     <div
-      className="relative h-full w-full overflow-hidden rounded-xl"
+      className="relative h-full w-full overflow-hidden rounded-md"
       onMouseMove={handleMouseToolTip}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setTooltipContent("")}
