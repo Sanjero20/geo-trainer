@@ -23,6 +23,7 @@ function HowToPlay({ open, onOpenChange }: ModalProps) {
           </DialogTitle>
         </DialogHeader>
 
+        {/* Image */}
         <div className="h-64 w-full rounded bg-zinc-300"></div>
 
         <DialogDescription className="text-center text-lg">

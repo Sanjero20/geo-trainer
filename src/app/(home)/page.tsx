@@ -2,29 +2,20 @@ import GetStartedButton from "./get-started";
 
 function Home() {
   return (
-    <>
-      {/* Background Image */}
-      <div className="absolute left-0 top-0 z-[-1] h-full w-full bg-[url('/background.jpg')] bg-cover bg-center bg-no-repeat brightness-50">
-        <div className="h-full bg-[radial-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-transparent to-black"></div>
-      </div>
+    <div className="flex h-full flex-col">
+      <section className="flex h-full flex-col items-center justify-center gap-2 text-center">
+        <h1 className="text-5xl font-bold">
+          Master the map of the Philippines!
+        </h1>
 
-      {/* Main Content */}
-      <main className="flex h-full flex-col justify-center text-white">
-        <div className="flex flex-col items-center gap-4 sm:w-1/2 sm:items-start">
-          <h1 className="text-center text-3xl font-bold sm:text-start sm:text-6xl">
-            Memorize Philippines Province Geolocation
-          </h1>
+        <p className="text-2xl">
+          Memorize the geolocation of provinces <br />
+          Explore the beauty of the 🇵🇭 archipelago.
+        </p>
 
-          <p className="text-center text-xl sm:text-start">
-            Learn the geolocation of all provinces in the Philippines with our
-            interactive project. Explore the map, take quizzes, and challenge
-            yourself to remember the locations.
-          </p>
-
-          <GetStartedButton />
-        </div>
-      </main>
-    </>
+        <GetStartedButton />
+      </section>
+    </div>
   );
 }
 

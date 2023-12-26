@@ -21,18 +21,23 @@ function ModalResetGame({ open, onOpenChange, restartGame }: ModalProps) {
       <DialogContent className="z-[999]">
         <DialogHeader>
           <DialogTitle className="text-center">
-            Do you want to restart?
+            Are you sure you want to restart?
           </DialogTitle>
         </DialogHeader>
 
-        <DialogDescription className="text-center text-lg"></DialogDescription>
+        <DialogDescription className="text-center">
+          Restarting will result in the loss of your progress in the current
+          game.
+        </DialogDescription>
 
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="outline">Cancel</Button>
+            <Button variant="outline" className="w-1/2">
+              Cancel
+            </Button>
           </DialogClose>
 
-          <Button variant="destructive" onClick={restartGame}>
+          <Button variant="destructive" className="w-1/2" onClick={restartGame}>
             Restart
           </Button>
         </DialogFooter>

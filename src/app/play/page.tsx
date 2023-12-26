@@ -20,7 +20,7 @@ function PlayPage() {
   const [tutorialModalOpen, setTutorialModalOpen] = useState(false);
   const [mapStyles, setMapStyles] = useState<any>(defaultStyles);
 
-  const { remaining, resetGame } = useGameStore();
+  const { status, remaining, resetGame } = useGameStore();
 
   const restartGame = () => {
     setRestartModalOpen(false);
@@ -33,7 +33,9 @@ function PlayPage() {
       <div className="relative flex h-full w-full flex-col gap-1">
         <PlayableMap mapStyles={mapStyles} restartGame={restartGame} />
 
-        <Button onClick={() => setTutorialModalOpen(true)}>?</Button>
+        {/* <Button onClick={() => setTutorialModalOpen(true)}>?</Button> */}
+
+        {/* Footer */}
         <section className="flex items-center justify-between">
           <Button
             variant="destructive"
