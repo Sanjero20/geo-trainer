@@ -8,6 +8,7 @@ import { LeafletMouseEvent } from "leaflet";
 import InteractiveMap from "@/components/interactive-map";
 import MouseTooltip, { TooltipCoords } from "@/components/mouse-tooltip";
 
+import { useGameStore } from "@/stores/game";
 import { REGIONS } from "@/data/regions";
 import {
   defaultStyles,
@@ -15,7 +16,6 @@ import {
   correctColor,
   hoverColorPlay,
 } from "@/components/interactive-map/map-settings";
-import { useGameStore } from "@/stores/game";
 
 interface Props {
   mapStyles: any;
@@ -48,6 +48,11 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     if (currentIndex < provinces.length - 1) {
       setTooltipContent(currentlyGuessing);
     }
+  };
+
+  const handleMouseLeave = () => {
+    setTooltipPosition(null);
+    setTooltipContent("");
   };
 
   const clickFeature = useCallback((e: LeafletMouseEvent) => {
@@ -120,7 +125,7 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
   useEffect(() => {
     // Cleanup function for component unmount or dependencies change
     return () => {
-      setTooltipContent("");
+      handleMouseLeave();
       resetGame();
     };
   }, []);
@@ -146,7 +151,7 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
       className="relative h-full w-full overflow-hidden rounded-md"
       onMouseMove={handleMouseToolTip}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={() => setTooltipContent("")}
+      onMouseLeave={handleMouseLeave}
     >
       <InteractiveMap>{memoizedRegions}</InteractiveMap>
 
