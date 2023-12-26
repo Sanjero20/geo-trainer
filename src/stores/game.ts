@@ -1,32 +1,32 @@
 import { create } from "zustand";
-import { shuffleArray } from "@/lib/array-utils";
 import { getAllProvinces } from "@/data/provinces";
+import { shuffleArray } from "@/lib/game";
 
 type Status = "playing" | "not-playing";
 
-interface Provinces {
+export interface Province {
   name: string;
   guessed: boolean | null;
 }
 
 interface GameStates {
   status: Status;
-  provinces: Provinces[];
+  provinces: Province[];
   currentIndex: number;
   remaining: number;
 }
 
 interface GameActions {
   setGameStatus: (status: Status) => void;
-  resetGame: () => void;
+  resetGameData: () => void;
 
   getGameData: () => {
-    provinces: Provinces[];
+    provinces: Province[];
     currentIndex: number;
     currentlyGuessing: string;
   };
 
-  updateGameData: (provinces: Provinces[]) => void;
+  updateGameData: (provinces: Province[]) => void;
 }
 
 const initialProvinces = () => {
@@ -54,7 +54,7 @@ export const useGameStore = create<GameStates & GameActions>((set, get) => ({
   remaining: initialRemaining,
 
   // Game handlers
-  resetGame: () => {
+  resetGameData: () => {
     set({
       provinces: initialProvinces(),
       currentIndex: 0,

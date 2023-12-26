@@ -23,7 +23,7 @@ interface Props {
 }
 
 function PhilippinesMap({ mapStyles, restartGame }: Props) {
-  const { resetGame, getGameData, updateGameData } = useGameStore();
+  const { resetGameData, getGameData, updateGameData } = useGameStore();
 
   const [tooltipContent, setTooltipContent] = useState("");
   const [tooltipPosition, setTooltipPosition] = useState<TooltipCoords | null>(
@@ -126,7 +126,7 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     // Cleanup function for component unmount or dependencies change
     return () => {
       handleMouseLeave();
-      resetGame();
+      resetGameData();
     };
   }, []);
 

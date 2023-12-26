@@ -2,13 +2,16 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
+
 import InteractiveMapLoader from "@/components/interactive-map/loader";
-import { Card } from "@/components/ui/card";
-import { useGameStore } from "@/stores/game";
 import { defaultStyles } from "@/components/interactive-map/map-settings";
+
+import { Button } from "@/components/ui/button";
 import HowToPlay from "./how-to-play";
 import ModalResetGame from "./reset-modal";
-import { Button } from "@/components/ui/button";
+
+import { useGameStore } from "@/stores/game";
+import { calculateScore } from "@/lib/game";
 
 const PlayableMap = dynamic(() => import("./play-map"), {
   loading: () => <InteractiveMapLoader />,
@@ -20,12 +23,12 @@ function PlayPage() {
   const [tutorialModalOpen, setTutorialModalOpen] = useState(false);
   const [mapStyles, setMapStyles] = useState<any>(defaultStyles);
 
-  const { status, remaining, resetGame } = useGameStore();
+  const { provinces, status, remaining, resetGameData } = useGameStore();
 
   const restartGame = () => {
     setRestartModalOpen(false);
     setMapStyles({ ...defaultStyles });
-    resetGame();
+    resetGameData();
   };
 
   return (
@@ -33,20 +36,26 @@ function PlayPage() {
       <div className="relative flex h-full w-full flex-col gap-1">
         <PlayableMap mapStyles={mapStyles} restartGame={restartGame} />
 
-        {/* <Button onClick={() => setTutorialModalOpen(true)}>?</Button> */}
-
         {/* Footer */}
         <section className="flex items-center justify-between">
-          <Button
-            variant="destructive"
-            onClick={() => setRestartModalOpen(true)}
-          >
-            Restart
-          </Button>
+          {remaining === 0 ? (
+            <Button onClick={restartGame}>Play Again</Button>
+          ) : (
+            <Button
+              variant="destructive"
+              onClick={() => setRestartModalOpen(true)}
+            >
+              Restart
+            </Button>
+          )}
 
-          <div className="dark flex gap-2">
-            <p className="px-8 py-2">00:00</p>
-            <p className="px-8 py-2">{remaining} remaining</p>
+          <div className="flex items-center gap-4 font-bold text-primary">
+            <p>
+              {remaining !== 0
+                ? `${remaining} remaining`
+                : `Score: ${calculateScore(provinces)}`}
+            </p>
+            <Button onClick={() => setTutorialModalOpen(true)}>?</Button>
           </div>
         </section>
       </div>
