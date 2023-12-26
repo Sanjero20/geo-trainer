@@ -13,8 +13,8 @@ function NavLink({ href, children }: NavLinkProps) {
   const currentUrl = usePathname();
 
   const styles = cn(
-    currentUrl === "/" ? "border-white" : "border-black",
-    currentUrl !== href && "border-transparent",
+    // currentUrl === "/" && "border-black",
+    currentUrl === href ? "border-black" : "border-transparent",
     "border-b-2",
   );
 

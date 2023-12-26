@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { Metadata } from "next";
 
 import Header from "@/components/header/header";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {
   title: "Geo Trainer PH",
@@ -11,9 +12,12 @@ export const metadata: Metadata = {
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="relative flex h-screen min-h-screen flex-col bg-background pb-4">
+      <body className="container flex h-screen min-h-screen flex-col gap-2 bg-background py-2">
         <Header />
-        <main className="flex-grow px-4 sm:container">{children}</main>
+
+        <Separator />
+
+        <div className="flex-grow">{children}</div>
       </body>
     </html>
   );

@@ -45,8 +45,8 @@ function PlayPage() {
           </Button>
 
           <div className="dark flex gap-2">
-            <Card className="px-8 py-2">00:00</Card>
-            <Card className="px-8 py-2">{remaining} remaining</Card>
+            <p className="px-8 py-2">00:00</p>
+            <p className="px-8 py-2">{remaining} remaining</p>
           </div>
         </section>
       </div>
