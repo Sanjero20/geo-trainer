@@ -13,7 +13,7 @@ function MouseTooltip({ position, children }: MouseTooltipProps) {
 
   return (
     <div
-      className={`absolute z-[1000] rounded bg-black p-2 text-white`}
+      className={`absolute z-[1000] hidden rounded bg-black p-2 text-white sm:block`}
       style={{
         top: `${y}px`,
         left: `${x}px`,
