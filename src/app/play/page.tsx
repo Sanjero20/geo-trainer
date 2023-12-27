@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
 import InteractiveMapLoader from "@/components/interactive-map/loader";
@@ -20,16 +20,27 @@ const PlayableMap = dynamic(() => import("./play-map"), {
 
 function PlayPage() {
   const [restartModalOpen, setRestartModalOpen] = useState(false);
-  const [tutorialModalOpen, setTutorialModalOpen] = useState(false);
+
   const [mapStyles, setMapStyles] = useState<any>(defaultStyles);
 
-  const { provinces, status, remaining, resetGameData } = useGameStore();
+  const { provinces, status, setGameStatus, remaining, resetGameData } =
+    useGameStore();
 
   const restartGame = () => {
-    setRestartModalOpen(false);
     setMapStyles({ ...defaultStyles });
+    setGameStatus("playing");
     resetGameData();
+    setRestartModalOpen(false);
   };
+
+  useEffect(() => {
+    // Reset details on unmount
+    return () => {
+      setGameStatus("not-playing");
+      resetGameData();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -37,31 +48,32 @@ function PlayPage() {
         <PlayableMap mapStyles={mapStyles} restartGame={restartGame} />
 
         {/* Footer */}
-        <section className="flex items-center justify-between">
-          {remaining === 0 ? (
-            <Button onClick={restartGame}>Play Again</Button>
-          ) : (
-            <Button
-              variant="destructive"
-              onClick={() => setRestartModalOpen(true)}
-            >
-              Restart
-            </Button>
-          )}
 
-          <div className="flex items-center gap-4 font-bold text-primary">
-            <p>
-              {remaining !== 0
-                ? `${remaining} remaining`
-                : `Score: ${calculateScore(provinces)}`}
-            </p>
-            <Button onClick={() => setTutorialModalOpen(true)}>?</Button>
-          </div>
-        </section>
+        {status !== "not-playing" && (
+          <section className="flex items-center justify-between">
+            {remaining === 0 ? (
+              <Button onClick={restartGame}>Play Again</Button>
+            ) : (
+              <Button
+                variant="destructive"
+                onClick={() => setRestartModalOpen(true)}
+              >
+                Restart
+              </Button>
+            )}
+
+            <div className="flex items-center gap-4 font-bold text-primary">
+              <p>
+                {remaining !== 0
+                  ? `${remaining} remaining`
+                  : `Score: ${calculateScore(provinces)}`}
+              </p>
+            </div>
+          </section>
+        )}
       </div>
 
       {/* Dialogs */}
-      <HowToPlay open={tutorialModalOpen} onOpenChange={setTutorialModalOpen} />
 
       <ModalResetGame
         open={restartModalOpen}

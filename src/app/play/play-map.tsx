@@ -16,6 +16,7 @@ import {
   correctColor,
   hoverColorPlay,
 } from "@/components/interactive-map/map-settings";
+import Blocker from "./blocker";
 
 interface Props {
   mapStyles: any;
@@ -23,7 +24,14 @@ interface Props {
 }
 
 function PhilippinesMap({ mapStyles, restartGame }: Props) {
-  const { resetGameData, getGameData, updateGameData } = useGameStore();
+  const {
+    status,
+    getGameStatus,
+    setGameStatus,
+    resetGameData,
+    getGameData,
+    updateGameData,
+  } = useGameStore();
 
   const [tooltipContent, setTooltipContent] = useState("");
   const [tooltipPosition, setTooltipPosition] = useState<TooltipCoords | null>(
@@ -89,6 +97,7 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
 
     // Clear the tooltip when finished indexing the entire list
     if (currentIndex === provinces.length - 1) {
+      setGameStatus("gameover");
       setTooltipContent("");
       return;
     }
@@ -103,6 +112,18 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     if (currentColor === "white") {
       layer.setStyle({ fillColor: hoverColorPlay });
     }
+
+    // allow map interactivity when game is over
+    if (getGameStatus() === "gameover") {
+      // Extract event layer data
+      const x = e.containerPoint.x + 15;
+      const y = e.containerPoint.y + 5;
+      const { ADM2_EN: province } = layer.feature.properties;
+
+      // Set Tooltip coords and content
+      setTooltipPosition({ x, y });
+      setTooltipContent(province);
+    }
   }, []);
 
   const resetStyles = useCallback((e: LeafletMouseEvent) => {
@@ -111,6 +132,10 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
 
     if (currentColor === hoverColorPlay) {
       layer.setStyle(defaultStyles);
+    }
+
+    if (getGameStatus() === "gameover") {
+      setTooltipContent("");
     }
   }, []);
 
@@ -153,9 +178,11 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {status === "not-playing" && <Blocker />}
+
       <InteractiveMap>{memoizedRegions}</InteractiveMap>
 
-      {tooltipContent && tooltipPosition && (
+      {status !== "not-playing" && tooltipContent && tooltipPosition && (
         <MouseTooltip position={tooltipPosition}>{tooltipContent}</MouseTooltip>
       )}
     </div>

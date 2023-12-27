@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { getAllProvinces } from "@/data/provinces";
 import { shuffleArray } from "@/lib/game";
 
-type Status = "playing" | "not-playing";
+type Status = "playing" | "not-playing" | "gameover";
 
 export interface Province {
   name: string;
@@ -18,6 +18,8 @@ interface GameStates {
 
 interface GameActions {
   setGameStatus: (status: Status) => void;
+  getGameStatus: () => Status;
+
   resetGameData: () => void;
 
   getGameData: () => {
@@ -46,6 +48,10 @@ export const useGameStore = create<GameStates & GameActions>((set, get) => ({
 
   setGameStatus: (status) => {
     set({ status });
+  },
+
+  getGameStatus: () => {
+    return get().status;
   },
 
   // Main game interaction
