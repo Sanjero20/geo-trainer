@@ -17,8 +17,12 @@ function Blocker() {
 
   return (
     <>
-      <div className="absolute z-[500] flex h-full w-full flex-col items-center justify-center gap-2 bg-primary/10 backdrop-blur-sm">
-        <Button className="z-[501] flex gap-1 px-8" onClick={startGame}>
+      {/* Background blur */}
+      <div className="absolute z-[500] h-full w-full bg-primary/10 backdrop-blur-sm"></div>
+
+      {/* Main Content */}
+      <div className="absolute z-[501] flex h-full w-full flex-col items-center justify-center gap-2">
+        <Button className="z-[400] flex gap-1 px-8" onClick={startGame}>
           <Play size={18} />
           Play
         </Button>
