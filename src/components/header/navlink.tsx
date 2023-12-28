@@ -7,15 +7,17 @@ import { cn } from "@/lib/utils";
 interface NavLinkProps {
   href: string;
   children: React.ReactNode;
+  className?: string;
 }
 
-function NavLink({ href, children }: NavLinkProps) {
+function NavLink({ href, children, className }: NavLinkProps) {
   const currentUrl = usePathname();
 
   const styles = cn(
     // currentUrl === "/" && "border-black",
     currentUrl === href ? "border-black" : "border-transparent",
     "border-b-2",
+    className,
   );
 
   return (
