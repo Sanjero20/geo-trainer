@@ -30,7 +30,7 @@ function ModalResetGame({ open, onOpenChange, restartGame }: ModalProps) {
           game.
         </DialogDescription>
 
-        <DialogFooter>
+        <DialogFooter className="flex-row gap-1">
           <DialogClose asChild>
             <Button variant="outline" className="w-1/2">
               Cancel

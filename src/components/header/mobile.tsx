@@ -15,6 +15,7 @@ function MobileMenu() {
 
   useEffect(() => {
     toggleMenu();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   const styles = cn(
