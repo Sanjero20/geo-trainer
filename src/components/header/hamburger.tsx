@@ -4,9 +4,14 @@ import { useMenuStore } from "@/stores/menu";
 import { Menu } from "lucide-react";
 
 function Hamburger() {
-  const { toggleMenu } = useMenuStore();
+  const { setMenuIsOpen } = useMenuStore();
 
-  return <Menu onClick={toggleMenu} className="cursor-pointer sm:hidden" />;
+  return (
+    <Menu
+      onClick={() => setMenuIsOpen(true)}
+      className="cursor-pointer sm:hidden"
+    />
+  );
 }
 
 export default Hamburger;

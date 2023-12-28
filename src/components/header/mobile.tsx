@@ -9,12 +9,12 @@ import { useEffect } from "react";
 import NavLink from "./navlink";
 
 function MobileMenu() {
-  const { menuIsOpen, toggleMenu } = useMenuStore();
+  const { menuIsOpen, setMenuIsOpen } = useMenuStore();
 
   const pathname = usePathname();
 
   useEffect(() => {
-    toggleMenu();
+    setMenuIsOpen(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
@@ -27,7 +27,10 @@ function MobileMenu() {
     <div className={styles}>
       <div className="relative flex h-full w-full flex-col items-center justify-center">
         {/* Close Icon */}
-        <X className="absolute right-2 top-3" onClick={toggleMenu} />
+        <X
+          className="absolute right-2 top-3"
+          onClick={() => setMenuIsOpen(false)}
+        />
 
         {/* Main Menu */}
         <nav className="flex flex-col gap-8">

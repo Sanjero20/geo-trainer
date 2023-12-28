@@ -2,12 +2,12 @@ import { create } from "zustand";
 
 interface Props {
   menuIsOpen: boolean;
-  toggleMenu: () => void;
+  setMenuIsOpen: (bool: boolean) => void;
 }
 
 export const useMenuStore = create<Props>((set, get) => ({
   menuIsOpen: false,
-  toggleMenu: () => {
-    set({ menuIsOpen: !get().menuIsOpen });
+  setMenuIsOpen: (bool) => {
+    set({ menuIsOpen: bool });
   },
 }));
