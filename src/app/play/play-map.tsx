@@ -5,18 +5,19 @@ import { useCallback, useState, MouseEvent, useEffect, useMemo } from "react";
 import { GeoJSON } from "react-leaflet";
 import { LeafletMouseEvent } from "leaflet";
 
+import Blocker from "./blocker";
 import InteractiveMap from "@/components/interactive-map";
 import MouseTooltip, { TooltipCoords } from "@/components/mouse-tooltip";
-
-import { useGameStore } from "@/stores/game";
-import { REGIONS } from "@/data/regions";
 import {
   defaultStyles,
   wrongColor,
   correctColor,
   hoverColorPlay,
 } from "@/components/interactive-map/map-settings";
-import Blocker from "./blocker";
+
+import { useGameStore } from "@/stores/game";
+import { REGIONS } from "@/data/regions";
+import { isMobileDevice } from "@/lib/utils";
 
 interface Props {
   mapStyles: any;
@@ -33,17 +34,20 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     updateGameData,
   } = useGameStore();
 
+  const [isMobile, setMobileMobile] = useState(isMobileDevice());
   const [tooltipContent, setTooltipContent] = useState("");
   const [tooltipPosition, setTooltipPosition] = useState<TooltipCoords | null>(
     null,
   );
 
   const handleMouseToolTip = (e: MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
+
     const divWidth = e.currentTarget.offsetWidth;
 
     // Adjust offset base on container size
     const offsetX = divWidth < 1336 ? 15 : 275;
-    const offsetY = 70;
+    const offsetY = 60;
 
     const x = e.clientX - offsetX;
     const y = e.clientY - offsetY;
@@ -52,6 +56,8 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
   };
 
   const handleMouseEnter = () => {
+    if (isMobile) return;
+
     const { provinces, currentIndex, currentlyGuessing } = getGameData();
     if (currentIndex < provinces.length - 1) {
       setTooltipContent(currentlyGuessing);
@@ -59,6 +65,8 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
+
     setTooltipPosition(null);
     setTooltipContent("");
   };
@@ -134,7 +142,7 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
       layer.setStyle(defaultStyles);
     }
 
-    if (getGameStatus() === "gameover") {
+    if (getGameStatus() === "gameover" && !isMobile) {
       setTooltipContent("");
     }
   }, []);
@@ -148,12 +156,25 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
   };
 
   useEffect(() => {
+    if (isMobile) {
+      const { currentlyGuessing } = getGameData();
+      setTooltipContent(currentlyGuessing);
+    }
+
     // Cleanup function for component unmount or dependencies change
     return () => {
-      handleMouseLeave();
+      // handleMouseLeave();
       resetGameData();
     };
   }, []);
+
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const { currentlyGuessing } = getGameData();
+
+    setTooltipContent(currentlyGuessing);
+  }, [restartGame]);
 
   const memoizedRegions = useMemo(
     () => (
@@ -172,20 +193,26 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
   );
 
   return (
-    <div
-      className="relative h-full w-full overflow-hidden rounded-md"
-      onMouseMove={handleMouseToolTip}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {status === "not-playing" && <Blocker />}
+    <>
+      {isMobile && status == "playing" && <div>Find: {tooltipContent}</div>}
 
-      <InteractiveMap>{memoizedRegions}</InteractiveMap>
+      <div
+        className="relative h-full w-full overflow-hidden rounded-md"
+        onMouseMove={handleMouseToolTip}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {status === "not-playing" && <Blocker />}
 
-      {status !== "not-playing" && tooltipContent && tooltipPosition && (
-        <MouseTooltip position={tooltipPosition}>{tooltipContent}</MouseTooltip>
-      )}
-    </div>
+        <InteractiveMap>{memoizedRegions}</InteractiveMap>
+
+        {status !== "not-playing" && tooltipContent && tooltipPosition && (
+          <MouseTooltip position={tooltipPosition}>
+            {tooltipContent}
+          </MouseTooltip>
+        )}
+      </div>
+    </>
   );
 }
 

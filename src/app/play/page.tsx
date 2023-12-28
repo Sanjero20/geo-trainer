@@ -7,7 +7,6 @@ import InteractiveMapLoader from "@/components/interactive-map/loader";
 import { defaultStyles } from "@/components/interactive-map/map-settings";
 
 import { Button } from "@/components/ui/button";
-import HowToPlay from "./how-to-play";
 import ModalResetGame from "./reset-modal";
 
 import { useGameStore } from "@/stores/game";
@@ -74,7 +73,6 @@ function PlayPage() {
       </div>
 
       {/* Dialogs */}
-
       <ModalResetGame
         open={restartModalOpen}
         onOpenChange={setRestartModalOpen}
