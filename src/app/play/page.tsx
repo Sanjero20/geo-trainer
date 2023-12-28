@@ -65,7 +65,7 @@ function PlayPage() {
               <p>
                 {remaining !== 0
                   ? `${remaining} remaining`
-                  : `Score: ${calculateScore(provinces)}`}
+                  : `Score: ${calculateScore(provinces)} / ${provinces.length}`}
               </p>
             </div>
           </section>
