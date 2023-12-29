@@ -61,19 +61,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 2.14056420019,
-        "Shape_Area": 0.0174432278431,
-        "ADM2_EN": "Batanes",
-        "ADM2_PCODE": "PH020900000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region II",
-        "ADM1_PCODE": "PH020000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Batanes",
+        "region": "Region II"
       }
     },
     {
@@ -311,19 +300,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 10.5183352854,
-        "Shape_Area": 0.750946379425,
-        "ADM2_EN": "Cagayan",
-        "ADM2_PCODE": "PH021500000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region II",
-        "ADM1_PCODE": "PH020000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Cagayan",
+        "region": "Region II"
       }
     },
     {
@@ -437,19 +415,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 5.5889344647,
-        "Shape_Area": 0.890507201149,
-        "ADM2_EN": "Isabela",
-        "ADM2_PCODE": "PH023100000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region II",
-        "ADM1_PCODE": "PH020000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Isabela",
+        "region": "Region II"
       }
     },
     {
@@ -540,19 +507,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 3.71248122313,
-        "Shape_Area": 0.348874355329,
-        "ADM2_EN": "Nueva Vizcaya",
-        "ADM2_PCODE": "PH025000000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region II",
-        "ADM1_PCODE": "PH020000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Nueva Vizcaya",
+        "region": "Region II"
       }
     },
     {
@@ -619,19 +575,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 2.97678081124,
-        "Shape_Area": 0.234040521115,
-        "ADM2_EN": "Quirino",
-        "ADM2_PCODE": "PH025700000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region II",
-        "ADM1_PCODE": "PH020000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Quirino",
+        "region": "Region II"
       }
     }
   ]

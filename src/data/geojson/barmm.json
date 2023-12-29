@@ -337,19 +337,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 6.92580257306,
-        "Shape_Area": 0.092729617773,
-        "ADM2_EN": "Basilan",
-        "ADM2_PCODE": "PH150700000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Bangsamoro Autonomous Region in Muslim Mindanao",
-        "ADM1_PCODE": "PH150000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Basilan",
+        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
       }
     },
     {
@@ -555,19 +544,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 4.21588058443,
-        "Shape_Area": 0.336480861594,
-        "ADM2_EN": "Lanao del Sur",
-        "ADM2_PCODE": "PH153600000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Bangsamoro Autonomous Region in Muslim Mindanao",
-        "ADM1_PCODE": "PH150000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Lanao del Sur",
+        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
       }
     },
     {
@@ -915,19 +893,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 7.31175978234,
-        "Shape_Area": 0.403083745999,
-        "ADM2_EN": "Maguindanao",
-        "ADM2_PCODE": "PH153800000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Bangsamoro Autonomous Region in Muslim Mindanao",
-        "ADM1_PCODE": "PH150000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Maguindanao",
+        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
       }
     },
     {
@@ -946,19 +913,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 0.64919976157,
-        "Shape_Area": 0.00704968545087,
-        "ADM2_EN": "Cotabato City",
-        "ADM2_PCODE": "PH129800000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region XII",
-        "ADM1_PCODE": "PH120000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Cotabato City",
+        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
       }
     },
     {
@@ -1741,19 +1697,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 20.2603515038,
-        "Shape_Area": 0.123791719955,
-        "ADM2_EN": "Sulu",
-        "ADM2_PCODE": "PH156600000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Bangsamoro Autonomous Region in Muslim Mindanao",
-        "ADM1_PCODE": "PH150000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Sulu",
+        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
       }
     },
     {
@@ -2393,19 +2338,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 15.9714384691,
-        "Shape_Area": 0.0941855950373,
-        "ADM2_EN": "Tawi-Tawi",
-        "ADM2_PCODE": "PH157000000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Bangsamoro Autonomous Region in Muslim Mindanao",
-        "ADM1_PCODE": "PH150000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Tawi-Tawi",
+        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
       }
     }
   ]

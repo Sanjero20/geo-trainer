@@ -89,19 +89,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 4.05971573481,
-        "Shape_Area": 0.356550177127,
-        "ADM2_EN": "Compostela Valley",
-        "ADM2_PCODE": "PH118200000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region XI",
-        "ADM1_PCODE": "PH110000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Compostela Valley",
+        "region": "Region XI"
       }
     },
     {
@@ -217,19 +206,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 4.87759877203,
-        "Shape_Area": 0.265921215984,
-        "ADM2_EN": "Davao del Norte",
-        "ADM2_PCODE": "PH112300000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region XI",
-        "ADM1_PCODE": "PH110000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Davao del Norte",
+        "region": "Region XI"
       }
     },
     {
@@ -338,19 +316,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 4.85420281169,
-        "Shape_Area": 0.348840074478,
-        "ADM2_EN": "Davao del Sur",
-        "ADM2_PCODE": "PH112400000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region XI",
-        "ADM1_PCODE": "PH110000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Davao del Sur",
+        "region": "Region XI"
       }
     },
     {
@@ -465,19 +432,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 4.37557367446,
-        "Shape_Area": 0.160156852653,
-        "ADM2_EN": "Davao Occidental",
-        "ADM2_PCODE": "PH118600000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region XI",
-        "ADM1_PCODE": "PH110000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Davao Occidental",
+        "region": "Region XI"
       }
     },
     {
@@ -611,19 +567,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 7.21379741882,
-        "Shape_Area": 0.408503173823,
-        "ADM2_EN": "Davao Oriental",
-        "ADM2_PCODE": "PH112500000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region XI",
-        "ADM1_PCODE": "PH110000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Davao Oriental",
+        "region": "Region XI"
       }
     }
   ]

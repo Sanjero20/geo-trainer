@@ -108,19 +108,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 6.75566022725,
-        "Shape_Area": 0.255766526352,
-        "ADM2_EN": "Aurora",
-        "ADM2_PCODE": "PH037700000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region III",
-        "ADM1_PCODE": "PH030000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Aurora",
+        "region": "Region III"
       }
     },
     {
@@ -169,19 +158,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 2.66116833906,
-        "Shape_Area": 0.104455461104,
-        "ADM2_EN": "Bataan",
-        "ADM2_PCODE": "PH030800000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region III",
-        "ADM1_PCODE": "PH030000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Bataan",
+        "region": "Region III"
       }
     },
     {
@@ -248,19 +226,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 3.27627566477,
-        "Shape_Area": 0.227702002639,
-        "ADM2_EN": "Bulacan",
-        "ADM2_PCODE": "PH031400000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region III",
-        "ADM1_PCODE": "PH030000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Bulacan",
+        "region": "Region III"
       }
     },
     {
@@ -339,19 +306,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 3.82785927608,
-        "Shape_Area": 0.463906501149,
-        "ADM2_EN": "Nueva Ecija",
-        "ADM2_PCODE": "PH034900000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region III",
-        "ADM1_PCODE": "PH030000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Nueva Ecija",
+        "region": "Region III"
       }
     },
     {
@@ -416,19 +372,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 2.67365539307,
-        "Shape_Area": 0.177710130755,
-        "ADM2_EN": "Pampanga",
-        "ADM2_PCODE": "PH035400000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region III",
-        "ADM1_PCODE": "PH030000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Pampanga",
+        "region": "Region III"
       }
     },
     {
@@ -489,19 +434,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 2.52163315224,
-        "Shape_Area": 0.250266569959,
-        "ADM2_EN": "Tarlac",
-        "ADM2_PCODE": "PH036900000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region III",
-        "ADM1_PCODE": "PH030000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Tarlac",
+        "region": "Region III"
       }
     },
     {
@@ -595,19 +529,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 5.32977023706,
-        "Shape_Area": 0.313705492674,
-        "ADM2_EN": "Zambales",
-        "ADM2_PCODE": "PH037100000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region III",
-        "ADM1_PCODE": "PH030000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Zambales",
+        "region": "Region III"
       }
     }
   ]
