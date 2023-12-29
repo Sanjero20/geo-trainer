@@ -1,7 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useCallback, useState, MouseEvent, useEffect, useMemo } from "react";
+import React, {
+  useCallback,
+  useState,
+  MouseEvent,
+  useEffect,
+  useMemo,
+} from "react";
 import { GeoJSON } from "react-leaflet";
 import { LeafletMouseEvent } from "leaflet";
 
@@ -40,12 +46,11 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     null,
   );
 
+  // Event handlers
   const handleMouseToolTip = (e: MouseEvent<HTMLDivElement>) => {
     if (isMobile) return;
 
     const divWidth = e.currentTarget.offsetWidth;
-
-    // Adjust offset base on container size
     const offsetX = divWidth < 1336 ? 15 : 275;
     const offsetY = 60;
 
@@ -71,47 +76,52 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     setTooltipContent("");
   };
 
-  const clickFeature = useCallback((e: LeafletMouseEvent) => {
-    const layer = e.target;
-    const map = layer._map;
+  // Game logic
+  const clickFeature = useCallback(
+    (e: LeafletMouseEvent) => {
+      if (status === "gameover") return;
 
-    // Skip if the layer is already colored, indicating it's not clickable.
-    if (layer.options.fillColor !== hoverColorPlay) return;
+      const layer = e.target;
+      const map = layer._map;
 
-    const { provinces, currentIndex, currentlyGuessing } = getGameData();
+      if (layer.options.fillColor !== hoverColorPlay) return;
 
-    const province = layer.feature.properties.ADM2_EN;
-    const isCorrect = province === currentlyGuessing;
+      const { provinces, currentIndex, currentlyGuessing } = getGameData();
 
-    // Update the styles of the correct layer
-    map.eachLayer((mapLayer: any) => {
-      if (
-        mapLayer.feature &&
-        mapLayer.feature.properties.ADM2_EN === currentlyGuessing
-      ) {
-        const fillColor = isCorrect ? correctColor : wrongColor;
-        mapLayer.setStyle({ fillColor });
+      const province = layer.feature.properties.ADM2_EN;
+      const isCorrect = province === currentlyGuessing;
+
+      // Update styles of the correct layer
+      map.eachLayer((mapLayer: any) => {
+        if (
+          mapLayer.feature &&
+          mapLayer.feature.properties.ADM2_EN === currentlyGuessing
+        ) {
+          const fillColor = isCorrect ? correctColor : wrongColor;
+          mapLayer.setStyle({ fillColor });
+        }
+      });
+
+      // Update the "guessed" flag
+      const updatedProvinces = provinces.map((province: any) =>
+        province.name === currentlyGuessing
+          ? { ...province, guessed: isCorrect }
+          : province,
+      );
+
+      updateGameData(updatedProvinces);
+
+      // Clear the tooltip when finished indexing the entire list
+      if (currentIndex === provinces.length - 1) {
+        setGameStatus("gameover");
+        setTooltipContent("");
+        return;
       }
-    });
 
-    // Change the "guessed" flag if correct or not
-    const updatedProvinces = provinces.map((province: any) =>
-      province.name === currentlyGuessing
-        ? { ...province, guessed: isCorrect }
-        : province,
-    );
-
-    updateGameData(updatedProvinces);
-
-    // Clear the tooltip when finished indexing the entire list
-    if (currentIndex === provinces.length - 1) {
-      setGameStatus("gameover");
-      setTooltipContent("");
-      return;
-    }
-
-    setTooltipContent(provinces[currentIndex + 1].name || "");
-  }, []);
+      setTooltipContent(provinces[currentIndex + 1].name || "");
+    },
+    [status],
+  );
 
   const highlightFeature = useCallback((e: LeafletMouseEvent) => {
     const layer = e.target;
@@ -121,40 +131,45 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
       layer.setStyle({ fillColor: hoverColorPlay });
     }
 
-    // allow map interactivity when game is over
+    // Allow map interactivity when the game is over
     if (getGameStatus() === "gameover") {
-      // Extract event layer data
       const x = e.containerPoint.x + 15;
       const y = e.containerPoint.y + 5;
       const { ADM2_EN: province } = layer.feature.properties;
 
-      // Set Tooltip coords and content
       setTooltipPosition({ x, y });
       setTooltipContent(province);
     }
   }, []);
 
-  const resetStyles = useCallback((e: LeafletMouseEvent) => {
-    const layer = e.target;
-    const currentColor = layer.options.fillColor;
+  const resetStyles = useCallback(
+    (e: LeafletMouseEvent) => {
+      const layer = e.target;
+      const currentColor = layer.options.fillColor;
 
-    if (currentColor === hoverColorPlay) {
-      layer.setStyle(defaultStyles);
-    }
+      if (currentColor === hoverColorPlay) {
+        layer.setStyle(defaultStyles);
+      }
 
-    if (getGameStatus() === "gameover" && !isMobile) {
-      setTooltipContent("");
-    }
-  }, []);
+      if (getGameStatus() === "gameover" && !isMobile) {
+        setTooltipContent("");
+      }
+    },
+    [status],
+  );
 
-  const onEachFeature = (feature: any, layer: any) => {
-    layer.on({
-      mousemove: highlightFeature,
-      mouseout: resetStyles,
-      click: clickFeature,
-    });
-  };
+  const onEachFeature = useCallback(
+    (feature: any, layer: any) => {
+      layer.on({
+        mousemove: highlightFeature,
+        mouseout: resetStyles,
+        click: clickFeature,
+      });
+    },
+    [status],
+  );
 
+  // Effects
   useEffect(() => {
     if (isMobile) {
       const { currentlyGuessing } = getGameData();
@@ -163,7 +178,8 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
 
     // Cleanup function for component unmount or dependencies change
     return () => {
-      // handleMouseLeave();
+      setTooltipContent("");
+      setTooltipPosition(null);
       resetGameData();
     };
   }, []);
@@ -172,7 +188,6 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     if (!isMobile) return;
 
     const { currentlyGuessing } = getGameData();
-
     setTooltipContent(currentlyGuessing);
   }, [restartGame]);
 
@@ -189,12 +204,14 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
         ))}
       </>
     ),
-    [restartGame],
+    [restartGame, tooltipContent, status],
   );
 
+  // Render component
   return (
     <>
-      {isMobile && status == "playing" && <div>Find: {tooltipContent}</div>}
+      {/* Display the Province that must be clicked */}
+      {isMobile && status === "playing" && <div>Find: {tooltipContent}</div>}
 
       <div
         className="relative h-full w-full overflow-hidden rounded-md"

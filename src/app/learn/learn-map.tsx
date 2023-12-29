@@ -2,13 +2,11 @@
 
 import { useCallback, useMemo, useState } from "react";
 
-import { GeoJSON } from "react-leaflet";
+import { GeoJSON, Tooltip } from "react-leaflet";
 import { Layer, LeafletMouseEvent } from "leaflet";
 
 import InteractiveMap from "@/components/interactive-map";
 import MouseTooltip from "@/components/mouse-tooltip";
-import useRegion from "@/stores/region";
-import { REGIONS } from "@/data/regions";
 import {
   defaultStyles,
   hoverStyles,
@@ -17,6 +15,9 @@ import {
   selectedHoveredColor,
   selectedHoverStyles,
 } from "@/components/interactive-map/map-settings";
+import useRegion from "@/stores/region";
+import { REGIONS } from "@/data/regions";
+import { isMobileDevice } from "@/lib/utils";
 
 function LearnPhilippinesMap() {
   const { selectedRegion } = useRegion();
@@ -30,7 +31,7 @@ function LearnPhilippinesMap() {
     // Extract event layer data
     const x = e.containerPoint.x + 15;
     const y = e.containerPoint.y + 5;
-    const { ADM2_EN: province } = layer.feature.properties;
+    const province = layer.feature.properties.ADM2_EN;
 
     // Set Tooltip coords and content
     setTooltipPos({ x, y });
@@ -91,12 +92,14 @@ function LearnPhilippinesMap() {
               data={region as any}
               style={styles as any}
               onEachFeature={onEachFeature}
-            />
+            >
+              {isMobileDevice() && <Tooltip sticky>{tooltipContent}</Tooltip>}
+            </GeoJSON>
           );
         })}
       </>
     ),
-    [onEachFeature, selectedRegion],
+    [onEachFeature, selectedRegion, tooltipContent],
   );
 
   return (
