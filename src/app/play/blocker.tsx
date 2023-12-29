@@ -1,11 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import HowToPlay from "./how-to-play";
-
 import { useGameStore } from "@/stores/game";
-import { useState } from "react";
+import HowToPlay from "./modal/how-to-play";
 
 function Blocker() {
   const [tutorialModalOpen, setTutorialModalOpen] = useState(false);
@@ -18,7 +17,7 @@ function Blocker() {
   return (
     <>
       {/* Background blur */}
-      <div className="absolute z-[500] h-full w-full bg-primary/10 backdrop-blur-sm"></div>
+      <div className="absolute z-[500] h-full w-full backdrop-blur-sm"></div>
 
       {/* Main Content */}
       <div className="absolute z-[501] flex h-full w-full flex-col items-center justify-center gap-2">

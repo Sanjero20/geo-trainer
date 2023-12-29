@@ -46,7 +46,7 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     null,
   );
 
-  // Event handlers
+  // Event handlers for non mobile users
   const handleMouseToolTip = (e: MouseEvent<HTMLDivElement>) => {
     if (isMobile) return;
 
@@ -88,7 +88,7 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
 
       const { provinces, currentIndex, currentlyGuessing } = getGameData();
 
-      const province = layer.feature.properties.province;
+      const { province } = layer.feature.properties;
       const isCorrect = province === currentlyGuessing;
 
       // Update styles of the correct layer
@@ -135,7 +135,7 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     if (getGameStatus() === "gameover") {
       const x = e.containerPoint.x + 15;
       const y = e.containerPoint.y + 5;
-      const { province: province } = layer.feature.properties;
+      const { province } = layer.feature.properties;
 
       setTooltipPosition({ x, y });
       setTooltipContent(province);
@@ -184,9 +184,9 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     };
   }, []);
 
+  // This will display the currently being guessed to the screen for mobile
   useEffect(() => {
     if (!isMobile) return;
-
     const { currentlyGuessing } = getGameData();
     setTooltipContent(currentlyGuessing);
   }, [restartGame]);
@@ -204,10 +204,9 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
         ))}
       </>
     ),
-    [restartGame, tooltipContent, status],
+    [restartGame],
   );
 
-  // Render component
   return (
     <>
       {/* Display the Province that must be clicked */}
@@ -219,10 +218,12 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
+        {/* Prevent the user from hovering on the map */}
         {status === "not-playing" && <Blocker />}
 
         <InteractiveMap>{memoizedRegions}</InteractiveMap>
 
+        {/* Tooltip only visible when playing or when game is over  */}
         {status !== "not-playing" && tooltipContent && tooltipPosition && (
           <MouseTooltip position={tooltipPosition}>
             {tooltipContent}

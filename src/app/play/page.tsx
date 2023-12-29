@@ -7,10 +7,10 @@ import InteractiveMapLoader from "@/components/interactive-map/loader";
 import { defaultStyles } from "@/components/interactive-map/map-settings";
 
 import { Button } from "@/components/ui/button";
-import ModalResetGame from "./reset-modal";
+import ModalResetGame from "./modal/reset-modal";
 
 import { useGameStore } from "@/stores/game";
-import { calculateScore } from "@/lib/game";
+import GameFooter from "./game-summary";
 
 const PlayableMap = dynamic(() => import("./play-map"), {
   loading: () => <InteractiveMapLoader />,
@@ -18,12 +18,10 @@ const PlayableMap = dynamic(() => import("./play-map"), {
 });
 
 function PlayPage() {
+  const [mapStyles, setMapStyles] = useState<any>(defaultStyles);
   const [restartModalOpen, setRestartModalOpen] = useState(false);
 
-  const [mapStyles, setMapStyles] = useState<any>(defaultStyles);
-
-  const { provinces, status, setGameStatus, remaining, resetGameData } =
-    useGameStore();
+  const { status, setGameStatus, resetGameData } = useGameStore();
 
   const restartGame = () => {
     setMapStyles({ ...defaultStyles });
@@ -33,7 +31,6 @@ function PlayPage() {
   };
 
   useEffect(() => {
-    // Reset details on unmount
     return () => {
       setGameStatus("not-playing");
       resetGameData();
@@ -46,33 +43,16 @@ function PlayPage() {
       <div className="relative flex h-full w-full flex-col gap-1">
         <PlayableMap mapStyles={mapStyles} restartGame={restartGame} />
 
-        {/* Footer */}
-
+        {/* Displays the controller and scoreboard */}
         {status !== "not-playing" && (
-          <section className="flex items-center justify-between">
-            {remaining === 0 ? (
-              <Button onClick={restartGame}>Play Again</Button>
-            ) : (
-              <Button
-                variant="destructive"
-                onClick={() => setRestartModalOpen(true)}
-              >
-                Restart
-              </Button>
-            )}
-
-            <div className="flex items-center gap-4 font-bold text-primary">
-              <p>
-                {remaining !== 0
-                  ? `${remaining} remaining`
-                  : `Score: ${calculateScore(provinces)} / ${provinces.length}`}
-              </p>
-            </div>
-          </section>
+          <GameFooter
+            restartGame={restartGame}
+            setRestartModalOpen={setRestartModalOpen}
+          />
         )}
       </div>
 
-      {/* Dialogs */}
+      {/* Dialog */}
       <ModalResetGame
         open={restartModalOpen}
         onOpenChange={setRestartModalOpen}
