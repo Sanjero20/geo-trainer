@@ -153,19 +153,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 1.78069799321,
-        "Shape_Area": 0.0440827384843,
-        "ADM2_EN": "Biliran",
-        "ADM2_PCODE": "PH087800000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VIII",
-        "ADM1_PCODE": "PH080000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Biliran",
+        "region": "Region VIII"
       }
     },
     {
@@ -623,19 +612,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 11.0958828545,
-        "Shape_Area": 0.35232812585,
-        "ADM2_EN": "Eastern Samar",
-        "ADM2_PCODE": "PH082600000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VIII",
-        "ADM1_PCODE": "PH080000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Eastern Samar",
+        "region": "Region VIII"
       }
     },
     {
@@ -1050,19 +1028,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 8.73011746212,
-        "Shape_Area": 0.461200552824,
-        "ADM2_EN": "Leyte",
-        "ADM2_PCODE": "PH083700000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VIII",
-        "ADM1_PCODE": "PH080000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Leyte",
+        "region": "Region VIII"
       }
     },
     {
@@ -1607,19 +1574,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 10.3899458026,
-        "Shape_Area": 0.286022533492,
-        "ADM2_EN": "Northern Samar",
-        "ADM2_PCODE": "PH084800000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VIII",
-        "ADM1_PCODE": "PH080000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Northern Samar",
+        "region": "Region VIII"
       }
     },
     {
@@ -2163,19 +2119,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 13.3054849197,
-        "Shape_Area": 0.446539553155,
-        "ADM2_EN": "Samar",
-        "ADM2_PCODE": "PH086000000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VIII",
-        "ADM1_PCODE": "PH080000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Samar",
+        "region": "Region VIII"
       }
     },
     {
@@ -2417,19 +2362,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 4.21464360874,
-        "Shape_Area": 0.136630639865,
-        "ADM2_EN": "Southern Leyte",
-        "ADM2_PCODE": "PH086400000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VIII",
-        "ADM1_PCODE": "PH080000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Southern Leyte",
+        "region": "Region VIII"
       }
     }
   ]

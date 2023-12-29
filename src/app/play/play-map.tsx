@@ -88,14 +88,14 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
 
       const { provinces, currentIndex, currentlyGuessing } = getGameData();
 
-      const province = layer.feature.properties.ADM2_EN;
+      const province = layer.feature.properties.province;
       const isCorrect = province === currentlyGuessing;
 
       // Update styles of the correct layer
       map.eachLayer((mapLayer: any) => {
         if (
           mapLayer.feature &&
-          mapLayer.feature.properties.ADM2_EN === currentlyGuessing
+          mapLayer.feature.properties.province === currentlyGuessing
         ) {
           const fillColor = isCorrect ? correctColor : wrongColor;
           mapLayer.setStyle({ fillColor });
@@ -135,7 +135,7 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     if (getGameStatus() === "gameover") {
       const x = e.containerPoint.x + 15;
       const y = e.containerPoint.y + 5;
-      const { ADM2_EN: province } = layer.feature.properties;
+      const { province: province } = layer.feature.properties;
 
       setTooltipPosition({ x, y });
       setTooltipContent(province);

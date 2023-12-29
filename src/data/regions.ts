@@ -12,12 +12,12 @@ import region10 from "./geojson/region-10.json";
 import region11 from "./geojson/region-11.json";
 import region12 from "./geojson/region-12.json";
 import region13 from "./geojson/region-13.json";
-
 import NCR from "./geojson/ncr.json";
 import CAR from "./geojson/car.json";
 import BARMM from "./geojson/barmm.json";
 
-const LUZON = [
+export const REGIONS = [
+  // Luzon
   NCR,
   CAR,
   region1,
@@ -26,12 +26,19 @@ const LUZON = [
   region4a,
   region4b,
   region5,
+
+  // Visayas
+  region6,
+  region7,
+  region8,
+
+  // Mindanao
+  region9,
+  region10,
+  region11,
+  region12,
+  region13,
+  BARMM,
 ];
-
-const VISAYAS = [region6, region7, region8];
-
-const MINDANAO = [region9, region10, region11, region12, region13, BARMM];
-
-export const REGIONS = [...LUZON, ...VISAYAS, ...MINDANAO];
 
 export type GeoJSONRegion = typeof region1;

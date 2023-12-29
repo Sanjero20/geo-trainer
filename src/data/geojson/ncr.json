@@ -91,19 +91,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 2.3202343624,
-        "Shape_Area": 0.0502164735501,
-        "ADM2_EN": "Metro Manila",
-        "ADM2_PCODE": "PH130000000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "National Capital Region",
-        "ADM1_PCODE": "PH130000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Metro Manila",
+        "region": "National Capital Region"
       }
     }
   ]

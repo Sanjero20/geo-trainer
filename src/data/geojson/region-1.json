@@ -61,19 +61,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 2.85013873146,
-        "Shape_Area": 0.27970934654,
-        "ADM2_EN": "Ilocos Norte",
-        "ADM2_PCODE": "PH012800000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region I",
-        "ADM1_PCODE": "PH010000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Ilocos Norte",
+        "region": "Region I"
       }
     },
     {
@@ -160,19 +149,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 4.15263235872,
-        "Shape_Area": 0.209467240383,
-        "ADM2_EN": "Ilocos Sur",
-        "ADM2_PCODE": "PH012900000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region I",
-        "ADM1_PCODE": "PH010000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Ilocos Sur",
+        "region": "Region I"
       }
     },
     {
@@ -230,19 +208,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 2.40331710206,
-        "Shape_Area": 0.119607381428,
-        "ADM2_EN": "La Union",
-        "ADM2_PCODE": "PH013300000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region I",
-        "ADM1_PCODE": "PH010000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "La Union",
+        "region": "Region I"
       }
     },
     {
@@ -364,19 +331,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 7.24619194123,
-        "Shape_Area": 0.435199185515,
-        "ADM2_EN": "Pangasinan",
-        "ADM2_PCODE": "PH015500000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region I",
-        "ADM1_PCODE": "PH010000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Pangasinan",
+        "region": "Region I"
       }
     }
   ]

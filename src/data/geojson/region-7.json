@@ -370,19 +370,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 9.71369909587,
-        "Shape_Area": 0.327235382592,
-        "ADM2_EN": "Bohol",
-        "ADM2_PCODE": "PH071200000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VII",
-        "ADM1_PCODE": "PH070000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Bohol",
+        "region": "Region VII"
       }
     },
     {
@@ -965,19 +954,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 13.0224883365,
-        "Shape_Area": 0.402044071967,
-        "ADM2_EN": "Cebu",
-        "ADM2_PCODE": "PH072200000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VII",
-        "ADM1_PCODE": "PH070000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Cebu",
+        "region": "Region VII"
       }
     },
     {
@@ -1050,19 +1028,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 1.05742406568,
-        "Shape_Area": 0.0262910479788,
-        "ADM2_EN": "Siquijor",
-        "ADM2_PCODE": "PH076100000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VII",
-        "ADM1_PCODE": "PH070000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Siquijor",
+        "region": "Region VII"
       }
     },
     {
@@ -1245,19 +1212,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 5.31949356214,
-        "Shape_Area": 0.422860892421,
-        "ADM2_EN": "Negros Oriental",
-        "ADM2_PCODE": "PH184600000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VII",
-        "ADM1_PCODE": "PH180000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Negros Oriental",
+        "region": "Region VII"
       }
     }
   ]

@@ -147,19 +147,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 4.62609122283,
-        "Shape_Area": 0.139664072421,
-        "ADM2_EN": "Aklan",
-        "ADM2_PCODE": "PH060400000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VI",
-        "ADM1_PCODE": "PH060000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Aklan",
+        "region": "Region VI"
       }
     },
     {
@@ -379,19 +368,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 6.04547755073,
-        "Shape_Area": 0.226466725341,
-        "ADM2_EN": "Antique",
-        "ADM2_PCODE": "PH060600000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VI",
-        "ADM1_PCODE": "PH060000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Antique",
+        "region": "Region VI"
       }
     },
     {
@@ -531,19 +509,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 3.89766813153,
-        "Shape_Area": 0.219569656742,
-        "ADM2_EN": "Capiz",
-        "ADM2_PCODE": "PH061900000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VI",
-        "ADM1_PCODE": "PH060000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Capiz",
+        "region": "Region VI"
       }
     },
     {
@@ -630,19 +597,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 3.37680147294,
-        "Shape_Area": 0.0492504354198,
-        "ADM2_EN": "Guimaras",
-        "ADM2_PCODE": "PH067900000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VI",
-        "ADM1_PCODE": "PH060000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Guimaras",
+        "region": "Region VI"
       }
     },
     {
@@ -957,19 +913,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 8.80332316874,
-        "Shape_Area": 0.390018203517,
-        "ADM2_EN": "Iloilo",
-        "ADM2_PCODE": "PH063000000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VI",
-        "ADM1_PCODE": "PH060000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Iloilo",
+        "region": "Region VI"
       }
     },
     {
@@ -1244,19 +1189,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 8.95208336891,
-        "Shape_Area": 0.632166247085,
-        "ADM2_EN": "Negros Occidental",
-        "ADM2_PCODE": "PH184500000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region VI",
-        "ADM1_PCODE": "PH180000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Negros Occidental",
+        "region": "Region VI"
       }
     }
   ]

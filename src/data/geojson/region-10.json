@@ -103,19 +103,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 5.01905060044,
-        "Shape_Area": 0.767606756127,
-        "ADM2_EN": "Bukidnon",
-        "ADM2_PCODE": "PH101300000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region X",
-        "ADM1_PCODE": "PH100000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Bukidnon",
+        "region": "Region X"
       }
     },
     {
@@ -141,19 +130,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 0.701327902385,
-        "Shape_Area": 0.019952008133,
-        "ADM2_EN": "Camiguin",
-        "ADM2_PCODE": "PH101800000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region X",
-        "ADM1_PCODE": "PH100000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Camiguin",
+        "region": "Region X"
       }
     },
     {
@@ -243,19 +221,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 4.15387684256,
-        "Shape_Area": 0.216439476919,
-        "ADM2_EN": "Lanao del Norte",
-        "ADM2_PCODE": "PH103500000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region X",
-        "ADM1_PCODE": "PH100000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Lanao del Norte",
+        "region": "Region X"
       }
     },
     {
@@ -305,19 +272,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 3.22658200343,
-        "Shape_Area": 0.153582315612,
-        "ADM2_EN": "Misamis Occidental",
-        "ADM2_PCODE": "PH104200000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region X",
-        "ADM1_PCODE": "PH100000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Misamis Occidental",
+        "region": "Region X"
       }
     },
     {
@@ -429,19 +385,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 5.51396270542,
-        "Shape_Area": 0.277534665421,
-        "ADM2_EN": "Misamis Oriental",
-        "ADM2_PCODE": "PH104300000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region X",
-        "ADM1_PCODE": "PH100000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Misamis Oriental",
+        "region": "Region X"
       }
     }
   ]

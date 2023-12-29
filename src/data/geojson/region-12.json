@@ -51,19 +51,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 5.11987629714,
-        "Shape_Area": 0.479736347581,
-        "ADM2_EN": "Cotabato",
-        "ADM2_PCODE": "PH124700000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region XII",
-        "ADM1_PCODE": "PH120000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Cotabato",
+        "region": "Region XII"
       }
     },
     {
@@ -119,19 +108,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 5.17265905904,
-        "Shape_Area": 0.302230725984,
-        "ADM2_EN": "Sarangani",
-        "ADM2_PCODE": "PH128000000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region XII",
-        "ADM1_PCODE": "PH120000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Sarangani",
+        "region": "Region XII"
       }
     },
     {
@@ -172,19 +150,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 3.61534000306,
-        "Shape_Area": 0.33663492902,
-        "ADM2_EN": "South Cotabato",
-        "ADM2_PCODE": "PH126300000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region XII",
-        "ADM1_PCODE": "PH120000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "South Cotabato",
+        "region": "Region XII"
       }
     },
     {
@@ -237,19 +204,8 @@
         ]
       },
       "properties": {
-        "Shape_Leng": 5.027333406,
-        "Shape_Area": 0.345415919512,
-        "ADM2_EN": "Sultan Kudarat",
-        "ADM2_PCODE": "PH126500000",
-        "ADM2_REF": null,
-        "ADM2ALT1EN": null,
-        "ADM2ALT2EN": null,
-        "ADM1_EN": "Region XII",
-        "ADM1_PCODE": "PH120000000",
-        "ADM0_EN": "Philippines (the)",
-        "ADM0_PCODE": "PH",
-        "date": "2016/06/15",
-        "validOn": "2018/01/30"
+        "province": "Sultan Kudarat",
+        "region": "Region XII"
       }
     }
   ]

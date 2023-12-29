@@ -5,7 +5,7 @@ function getProvince(region: GeoJSONRegion): string[] {
 
   const regionData = region.features;
   for (let i = 0; i < regionData.length; i++) {
-    const province = regionData[i].properties.ADM2_EN;
+    const province = regionData[i].properties.province;
     provinces.push(province);
   }
 

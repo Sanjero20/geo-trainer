@@ -31,7 +31,7 @@ function LearnPhilippinesMap() {
     // Extract event layer data
     const x = e.containerPoint.x + 15;
     const y = e.containerPoint.y + 5;
-    const province = layer.feature.properties.ADM2_EN;
+    const province = layer.feature.properties.province;
 
     // Set Tooltip coords and content
     setTooltipPos({ x, y });
@@ -81,7 +81,7 @@ function LearnPhilippinesMap() {
     () => (
       <>
         {REGIONS.map((region, index) => {
-          const regionName = region.features[0].properties.ADM1_EN;
+          const regionName = region.features[0].properties.region;
 
           const styles =
             regionName === selectedRegion ? selectedStyles : defaultStyles;
