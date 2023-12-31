@@ -338,7 +338,7 @@
       },
       "properties": {
         "province": "Basilan",
-        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
+        "region": "BARMM"
       }
     },
     {
@@ -545,7 +545,7 @@
       },
       "properties": {
         "province": "Lanao del Sur",
-        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
+        "region": "BARMM"
       }
     },
     {
@@ -894,7 +894,7 @@
       },
       "properties": {
         "province": "Maguindanao",
-        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
+        "region": "BARMM"
       }
     },
     {
@@ -914,7 +914,7 @@
       },
       "properties": {
         "province": "Cotabato City",
-        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
+        "region": "BARMM"
       }
     },
     {
@@ -1698,7 +1698,7 @@
       },
       "properties": {
         "province": "Sulu",
-        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
+        "region": "BARMM"
       }
     },
     {
@@ -2339,7 +2339,7 @@
       },
       "properties": {
         "province": "Tawi-Tawi",
-        "region": "Bangsamoro Autonomous Region in Muslim Mindanao"
+        "region": "BARMM"
       }
     }
   ]

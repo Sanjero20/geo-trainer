@@ -31,7 +31,7 @@
       },
       "properties": {
         "province": "Abra",
-        "region": "Cordillera Administrative Region"
+        "region": "CAR"
       }
     },
     {
@@ -67,7 +67,7 @@
       },
       "properties": {
         "province": "Apayao",
-        "region": "Cordillera Administrative Region"
+        "region": "CAR"
       }
     },
     {
@@ -94,7 +94,7 @@
       },
       "properties": {
         "province": "Benguet",
-        "region": "Cordillera Administrative Region"
+        "region": "CAR"
       }
     },
     {
@@ -122,7 +122,7 @@
       },
       "properties": {
         "province": "Ifugao",
-        "region": "Cordillera Administrative Region"
+        "region": "CAR"
       }
     },
     {
@@ -151,7 +151,7 @@
       },
       "properties": {
         "province": "Kalinga",
-        "region": "Cordillera Administrative Region"
+        "region": "CAR"
       }
     },
     {
@@ -180,7 +180,7 @@
       },
       "properties": {
         "province": "Mountain Province",
-        "region": "Cordillera Administrative Region"
+        "region": "CAR"
       }
     }
   ]
