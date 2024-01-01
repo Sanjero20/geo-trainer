@@ -1,5 +1,6 @@
 "use client";
 
+import Timer from "./timer";
 import { Button } from "@/components/ui/button";
 import { calculateScore } from "@/lib/game";
 import { useGameStore } from "@/stores/game";
@@ -23,6 +24,8 @@ function GameFooter({ restartGame, setRestartModalOpen }: Props) {
       )}
 
       <div className="flex items-center gap-4 font-bold text-primary">
+        <Timer />
+
         <p>
           {remaining !== 0
             ? `${remaining} remaining`

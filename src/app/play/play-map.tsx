@@ -210,7 +210,9 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
   return (
     <>
       {/* Display the Province that must be clicked */}
-      {isMobile && status === "playing" && <div>Find: {tooltipContent}</div>}
+      {status === "playing" && (
+        <div className="sm:hidden">Find: {tooltipContent}</div>
+      )}
 
       <div
         className="relative h-full w-full overflow-hidden rounded-md"

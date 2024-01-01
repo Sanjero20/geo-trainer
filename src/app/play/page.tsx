@@ -6,11 +6,11 @@ import dynamic from "next/dynamic";
 import InteractiveMapLoader from "@/components/interactive-map/loader";
 import { defaultStyles } from "@/components/interactive-map/map-settings";
 
-import { Button } from "@/components/ui/button";
 import ModalResetGame from "./modal/reset-modal";
 
 import { useGameStore } from "@/stores/game";
 import GameFooter from "./game-summary";
+import { useTimeStore } from "@/stores/time";
 
 const PlayableMap = dynamic(() => import("./play-map"), {
   loading: () => <InteractiveMapLoader />,
@@ -22,10 +22,15 @@ function PlayPage() {
   const [restartModalOpen, setRestartModalOpen] = useState(false);
 
   const { status, setGameStatus, resetGameData } = useGameStore();
+  const { restartTime, startTime } = useTimeStore();
 
   const restartGame = () => {
     setMapStyles({ ...defaultStyles });
     setGameStatus("playing");
+
+    restartTime();
+    startTime();
+
     resetGameData();
     setRestartModalOpen(false);
   };
@@ -34,6 +39,7 @@ function PlayPage() {
     return () => {
       setGameStatus("not-playing");
       resetGameData();
+      restartTime();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

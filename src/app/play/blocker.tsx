@@ -5,13 +5,17 @@ import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useGameStore } from "@/stores/game";
 import HowToPlay from "./modal/how-to-play";
+import { useTimeStore } from "@/stores/time";
 
 function Blocker() {
   const [tutorialModalOpen, setTutorialModalOpen] = useState(false);
+
   const { setGameStatus } = useGameStore();
+  const { startTime } = useTimeStore();
 
   const startGame = () => {
     setGameStatus("playing");
+    startTime();
   };
 
   return (

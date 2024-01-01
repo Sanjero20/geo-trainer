@@ -21,9 +21,9 @@
 
 - [x] Zoom functionality for detailed map exploration
 - [x] Highlight specific province
-- [x] Highlight map by region (Not available for mobile yet)
+- [x] Highlight map by region
 - [x] Display tooltip on hover
-- [ ] Search by province name
+- [x] Game timer
 
 ## Getting Started
 
