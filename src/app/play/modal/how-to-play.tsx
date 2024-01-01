@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -24,7 +25,15 @@ function HowToPlay({ open, onOpenChange }: ModalProps) {
         </DialogHeader>
 
         {/* Image */}
-        <div className="h-64 w-full rounded bg-zinc-300"></div>
+        <div className="relative h-fit w-full overflow-hidden rounded">
+          <Image
+            src="/demo.gif"
+            alt="demo.gif"
+            width={0}
+            height={0}
+            className="w-full object-cover"
+          />
+        </div>
 
         <DialogDescription className="text-center text-lg">
           Your goal is to quickly pinpoint the province on the map.
