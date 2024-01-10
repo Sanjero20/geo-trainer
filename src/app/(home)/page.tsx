@@ -1,7 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import GetStartedButton from "./get-started";
-import Image from "next/image";
-import Link from "next/link";
+import Footer from "./footer";
 
 function Home() {
   return (
@@ -21,24 +20,7 @@ function Home() {
 
       <Separator />
 
-      <footer className="pt-2 text-center text-primary/80">
-        <div className="flex h-full items-center justify-center gap-2">
-          Made by Sanjero20
-          <Link
-            href="https://github.com/sanjero20"
-            target="_blank"
-            className="flex items-center gap-2"
-          >
-            <Image
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-              width={32}
-              height={32}
-              alt="github"
-              className="opacity-80"
-            />
-          </Link>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
