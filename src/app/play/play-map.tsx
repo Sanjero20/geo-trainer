@@ -7,7 +7,6 @@ import React, {
   MouseEvent,
   useEffect,
   useMemo,
-  useRef,
 } from "react";
 import { GeoJSON } from "react-leaflet";
 import { LeafletMouseEvent } from "leaflet";
@@ -32,8 +31,6 @@ interface Props {
 }
 
 function PhilippinesMap({ mapStyles, restartGame }: Props) {
-  const ref = useRef<HTMLDivElement>(null);
-
   const {
     status,
     getGameStatus,
@@ -48,17 +45,6 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
   const [tooltipPosition, setTooltipPosition] = useState<TooltipCoords | null>(
     null,
   );
-
-  const [containerSize, setContainerSize] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const { current } = ref;
-
-    if (current) {
-      const { offsetWidth: x, offsetHeight: y } = current;
-      setContainerSize({ x, y });
-    }
-  }, []);
 
   // Event handlers for non mobile users
   const handleMouseToolTip = (e: MouseEvent<HTMLDivElement>) => {
@@ -230,8 +216,7 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
       )}
 
       <div
-        ref={ref}
-        className="relative h-screen w-full overflow-hidden rounded-md"
+        className="relative h-full w-full overflow-hidden rounded-md"
         onMouseMove={handleMouseToolTip}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
