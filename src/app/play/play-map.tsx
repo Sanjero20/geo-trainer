@@ -7,6 +7,7 @@ import React, {
   MouseEvent,
   useEffect,
   useMemo,
+  useRef,
 } from "react";
 import { GeoJSON } from "react-leaflet";
 import { LeafletMouseEvent } from "leaflet";
@@ -31,6 +32,8 @@ interface Props {
 }
 
 function PhilippinesMap({ mapStyles, restartGame }: Props) {
+  const ref = useRef<HTMLDivElement>(null);
+
   const {
     status,
     getGameStatus,
@@ -46,16 +49,28 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
     null,
   );
 
+  const [containerSize, setContainerSize] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const { current } = ref;
+
+    if (current) {
+      const { offsetWidth: x, offsetHeight: y } = current;
+      setContainerSize({ x, y });
+    }
+  }, []);
+
   // Event handlers for non mobile users
   const handleMouseToolTip = (e: MouseEvent<HTMLDivElement>) => {
     if (isMobile) return;
 
-    const divWidth = e.currentTarget.offsetWidth;
-    const offsetX = divWidth < 1336 ? 15 : 275;
-    const offsetY = 60;
+    const boundingBox = e.currentTarget.getBoundingClientRect();
 
-    const x = e.clientX - offsetX;
-    const y = e.clientY - offsetY;
+    const offsetX = 15;
+    const offsetY = 10;
+
+    const x = e.clientX - boundingBox.left + offsetX;
+    const y = e.clientY - boundingBox.top + offsetY;
 
     setTooltipPosition({ x, y });
   };
@@ -215,7 +230,8 @@ function PhilippinesMap({ mapStyles, restartGame }: Props) {
       )}
 
       <div
-        className="relative h-full w-full overflow-hidden rounded-md"
+        ref={ref}
+        className="relative h-screen w-full overflow-hidden rounded-md"
         onMouseMove={handleMouseToolTip}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
